@@ -20,7 +20,7 @@ void Manager::showInfo()
     cout << "职工编号：" << this->m_ID 
     << "\t姓名：" << this->m_Name 
     << "\t岗位：" << this->getDeptName() 
-    << "\t岗位职责：完成经理的任务" << endl; 
+    << "\t岗位职责：完成老板的任务，下发任务给员工" << endl; 
 
 }
 
