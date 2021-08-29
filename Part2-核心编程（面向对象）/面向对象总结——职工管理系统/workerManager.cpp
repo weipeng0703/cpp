@@ -1,4 +1,4 @@
-// 将构造函数和析构函数空实现补全
+// 将所有成员函数进行补全实现
 
 #include"workerManager.h"
 #include<fstream>
