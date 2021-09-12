@@ -11,6 +11,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 void PrintVector(vector<int> &v)
@@ -51,10 +52,30 @@ void test1()
     cout << "最后一个元素为：" << v1.back() << endl;
 }
 
+// 用sort()算法进行排序
+void test2()
+{
+    vector<int> v1;
+    v1.push_back(20);
+    v1.push_back(10);
+    v1.push_back(50);
+    v1.push_back(40);
+    v1.push_back(30);
+
+    cout << "排序前:" << endl;
+    PrintVector(v1);
+
+    sort(v1.begin(),v1.end());
+
+    cout << "排序后:" << endl;
+    PrintVector(v1);
+}
+
 
 int main()
 {
     test1();
+    test2();
 
     return 0;
 }
