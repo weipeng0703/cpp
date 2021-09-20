@@ -20,6 +20,8 @@
     输出：-100000
 */
 #include<vector>
+#define INT_MIN -2147483648
+#define INT_MAX 2147483647
 using namespace std;
 
 // 1.贪心算法
@@ -56,11 +58,12 @@ public:
     {
         //类似寻找最大最小值的题目，初始值一定要定义成理论上的最小最大值
         int MaxSum = INT_MIN;
-        //dp[i]表示nums中以nums[i]结尾的最大子序和
+        //v[i]表示nums中以nums[i]结尾的最大子序和
         vector<int> v(nums.size());
+
         v[0] = nums[0];
         MaxSum = v[0];
-        for (int i = 1; i < nums.Size(); i++)
+        for (int i = 1; i < nums.size(); i++)
         {
             v[i] = max(v[i - 1] + nums[i], nums[i]);
             MaxSum = max(MaxSum, v[i]);
@@ -83,10 +86,10 @@ public:
         // 类似寻找最大最小值的题目，
         // 初始值一定要定义成理论上的最小最大值
         int max = INT_MIN;
-        for (int i = 0; i < sums.size(); i++)
+        for (int i = 0; i < nums.size(); i++)
         {
             int sum = 0;   // 在每次开始执行序列相加前将中间结果sum置0
-            for (int j = i; j < sums.size(); j++)
+            for (int j = i; j < nums.size(); j++)
             {
                 sum += nums[j];
                 if (sum > max)    // 若中间结果小于0则一直累加
