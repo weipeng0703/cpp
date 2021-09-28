@@ -25,18 +25,17 @@ public:
         {
             return nullptr;
         }
+        
         int mid = (left + right) / 2;
+
         TreeNode* root = new TreeNode(nums[mid]);
         root->left = Helper(nums, left, mid - 1);
-        root->right = Helper(nums, mid, right);
+        root->right = Helper(nums, mid + 1, right);
         return root;
     }
 
     TreeNode* sortedArrayToBST(vector<int> &nums)
     {
-        return Helper(nums, 0, nums.size());
+        return Helper(nums, 0, nums.size() - 1);
     }
-
-
-
 };
