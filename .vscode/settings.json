@@ -5,6 +5,10 @@
         "iostream": "cpp",
         "vector": "cpp",
         "limits": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "*.tcc": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp"
     }
 }
