@@ -51,4 +51,15 @@ const int buffersize = 512;
         int *const curnum = &num;    // curnum将一直指向num
 
 
-// 2.4.3 顶层const
+// 2.4.3 顶层const  
+    // 用顶层const表示指针本身是个常量
+    // 底层const表示指针所指的对象是一个常量
+
+    // 更一般的，顶层 const 可以表示任意的对象是常量，这一点对任何数据类型都适用，如算术类型、类、指针等。
+    // 底层const 则与指针和引用等复合类型的基本类型部分有关。
+    // 比较特殊的是，指针类型既可以是顶层const 也可以是底层const
+
+
+// 2.4.4 constexpr和常量表达式
+
+
