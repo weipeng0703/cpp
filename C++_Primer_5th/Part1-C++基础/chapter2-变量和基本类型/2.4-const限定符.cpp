@@ -61,5 +61,24 @@ const int buffersize = 512;
 
 
 // 2.4.4 constexpr和常量表达式
+    // 常量表达式指值不会改变且在编译过程就能得到计算结果的表达式。
+    const int a = 27;       // 是
+    const int b = a + 1;    // 是
+
+    int c = 27;     // 不是
+    // const int d = get_num()   // 不是，需要具体运行才能得到结果
+
+    // C++11新规定：允许将变量声明为constexpr类型以便由编译器来验证变量的值是否是一个常量表达式
+    constexpr int mf = 20;
+    constexpr int limit = mf + 1;
+    // constexpr int sz = size();      // 只有当size()是一个constexpr函数时才是一条正确的声明语句
 
 
+    // 练习2.32
+    // int null = 0, *p = null;
+    // 错误，null是一个int变量而p是一个int指针，二者不能直接绑定
+    // 从语法角度看，可以修改为     int null = 0, *p = &null;
+    // 使用nullptr修改：       int null = 0, *p = null;
+
+
+    
