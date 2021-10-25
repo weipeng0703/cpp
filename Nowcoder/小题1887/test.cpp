@@ -1,15 +1,28 @@
-#include<iostream>
+#include<stdio.h>
 using namespace std;
 
-char *c[] = { "ENTER", "NEW", "POINT", "FIRST" }; 
-char **cp[] = { c+3, c+2, c+1, c }; 
-char ***cpp = cp; 
+void func(int *p)
+{
+    static int num = 4;
+    p = &num;
+    (*p)--;
+}
 
-int main(void)
-{ 
-    printf("%s", **++cpp); 
-    printf("%s", *--*++cpp+3); 
-    printf("%s", *cpp[-2]+3); 
-    printf("%s\n", cpp[-1][-1]+1); 
+void func1(int **p)
+{
+    static int num = 4;
+    *p = &num;
+    (**p)--;
+}
+int main()
+{
+    int i = 5;
+    int *p = &i;
+
+    func(p);
+    printf("%d\n",*p);
+
+    func1(&p);
+    printf("%d",*p);
     return 0;
 }
