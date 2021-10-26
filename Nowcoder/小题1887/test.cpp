@@ -1,28 +1,13 @@
-#include<stdio.h>
+#include <iostream>
 using namespace std;
 
-void func(int *p)
-{
-    static int num = 4;
-    p = &num;
-    (*p)--;
-}
+int main() { 
+    char *p1="hello";
+    char *p2="world";
+    char *p3="a piece of cake";
+    char *str[]={p1,p2,p3};
+    
+    printf("%c",*(str[0]+1));
 
-void func1(int **p)
-{
-    static int num = 4;
-    *p = &num;
-    (**p)--;
-}
-int main()
-{
-    int i = 5;
-    int *p = &i;
-
-    func(p);
-    printf("%d\n",*p);
-
-    func1(&p);
-    printf("%d",*p);
     return 0;
 }
