@@ -1,13 +1,15 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+int fun(int a) { 
+    int b=0;     
+    static  int c=3;
+    b++; 
+    c++; 
+    return (a+b+c);
+}
 
-int main() { 
-    char *p1="hello";
-    char *p2="world";
-    char *p3="a piece of cake";
-    char *str[]={p1,p2,p3};
-    
-    printf("%c",*(str[0]+1));
-
-    return 0;
+int main( ) {
+    int i=0;
+    for(;i<3;i++) 
+        printf("%d",fun(2));
+    return 0; 
 }
