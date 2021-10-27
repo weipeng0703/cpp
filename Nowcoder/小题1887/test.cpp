@@ -1,15 +1,45 @@
-#include <stdio.h>
-int fun(int a) { 
-    int b=0;     
-    static  int c=3;
-    b++; 
-    c++; 
-    return (a+b+c);
+class A
+{
+public:
+    void foo()
+    {
+        printf("1");
+    }
+    virtual void fun()
+    {
+        printf("2");
+    }
+};
+class B: public A
+{
+public:
+    void foo()
+    {
+        printf("3");
+    }
+    void fun()
+    {
+        printf("4");
+    }
+};
+int main(void)
+{
+    A a;
+    B b;
+    A *p = &a;
+    p->foo();
+    p->fun();
+
+
+    p = &b;
+    p->foo();
+    p->fun();
+
+    A *ptr = (A *)&b;
+    ptr->foo();
+    ptr->fun();
+    return 0;
 }
 
-int main( ) {
-    int i=0;
-    for(;i<3;i++) 
-        printf("%d",fun(2));
-    return 0; 
-}
+	
+
