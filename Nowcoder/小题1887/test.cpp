@@ -1,45 +1,15 @@
-class A
-{
-public:
-    void foo()
-    {
-        printf("1");
-    }
-    virtual void fun()
-    {
-        printf("2");
-    }
-};
-class B: public A
-{
-public:
-    void foo()
-    {
-        printf("3");
-    }
-    void fun()
-    {
-        printf("4");
-    }
-};
-int main(void)
-{
-    A a;
-    B b;
-    A *p = &a;
-    p->foo();
-    p->fun();
+#include<iostream>
+using namespace std;
 
 
-    p = &b;
-    p->foo();
-    p->fun();
 
-    A *ptr = (A *)&b;
-    ptr->foo();
-    ptr->fun();
+int main()
+{
+    char a[2][2] = {{'a','b'},{'c','d'}};
+    char (*p)[2] = a;
+    cout<<*(*(p+1));
+    p++;
+    cout<<*(*p+1)<<endl;
+
     return 0;
 }
-
-	
-
