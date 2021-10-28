@@ -1,15 +1,19 @@
 #include<iostream>
+#include<cstring>
 using namespace std;
 
 
-
-int main()
+int main(void)
 {
-    char a[2][2] = {{'a','b'},{'c','d'}};
-    char (*p)[2] = a;
-    cout<<*(*(p+1));
-    p++;
-    cout<<*(*p+1)<<endl;
+    // char ch[] = "afsg\0dfhs" ;
+
+    char ch[] = "\0" ;
+    cout << sizeof(ch) << endl;
+    cout << strlen(ch) << endl;
+
+    char ch1 = '\0' ;
+    cout << sizeof(ch1) << endl;
+    // cout << strlen(ch1) << endl;
 
     return 0;
 }
