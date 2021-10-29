@@ -1,24 +1,18 @@
-#include <iostream> 
+#include<iostream>
 using namespace std;
-class A {
-    float *p;  int n;
-public: 
-    A(int s){ n=s;  p=new float[n];}
-    ~A() {delete p;} 
-    int Getn() const {  return n; }
-    // float & operator[](int i) {  return p[i];} 
-    float & operator[](int i) {  return *(p + i);} 
 
-    void Print() {
-        int i; 
-        for(i=0;i< this->Getn();i++) 
-            {cout<<p[i];}  
-    }
+struct xx {
+    long long _x1;
+    char _x2;
+    int _x3;
+    char _x4[2];
+    static int _x5;
 };
-int main() {
-    A a(5); 
-    for (int i=0;i<a.Getn();i++) 
-        a[i] = i + 1; 
-    a.Print(); 
+int xx::_x5;
+
+int main()
+{
+    
+    cout << sizeof(xx) << endl;
     return 0;
 }
