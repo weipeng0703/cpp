@@ -1,19 +1,24 @@
-#include<iostream>
-#include<cstring>
+#include <iostream> 
 using namespace std;
+class A {
+    float *p;  int n;
+public: 
+    A(int s){ n=s;  p=new float[n];}
+    ~A() {delete p;} 
+    int Getn() const {  return n; }
+    // float & operator[](int i) {  return p[i];} 
+    float & operator[](int i) {  return *(p + i);} 
 
-
-int main(void)
-{
-    // char ch[] = "afsg\0dfhs" ;
-
-    char ch[] = "\0" ;
-    cout << sizeof(ch) << endl;
-    cout << strlen(ch) << endl;
-
-    char ch1 = '\0' ;
-    cout << sizeof(ch1) << endl;
-    // cout << strlen(ch1) << endl;
-
+    void Print() {
+        int i; 
+        for(i=0;i< this->Getn();i++) 
+            {cout<<p[i];}  
+    }
+};
+int main() {
+    A a(5); 
+    for (int i=0;i<a.Getn();i++) 
+        a[i] = i + 1; 
+    a.Print(); 
     return 0;
 }
