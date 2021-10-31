@@ -1,18 +1,12 @@
-#include<iostream>
-using namespace std;
-
-struct xx {
-    long long _x1;
-    char _x2;
-    int _x3;
-    char _x4[2];
-    static int _x5;
-};
-int xx::_x5;
-
-int main()
-{
-    
-    cout << sizeof(xx) << endl;
-    return 0;
+#include <stdio.h>
+int main() { 
+    int i, n = 0;
+    float x = 1, y1 = 2.1 / 1.9, y2 = 1.9 / 2.1;
+    for ( i = 1; i < 22; i++)
+        x = x * y1;
+    while ( x != 1.0 ) {
+        x = x * y2; n++;    
+    }
+    printf( "%d\n", n );
+    return 0; 
 }
