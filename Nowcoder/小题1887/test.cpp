@@ -1,12 +1,18 @@
 #include <stdio.h>
-int main() { 
-    int i, n = 0;
-    float x = 1, y1 = 2.1 / 1.9, y2 = 1.9 / 2.1;
-    for ( i = 1; i < 22; i++)
-        x = x * y1;
-    while ( x != 1.0 ) {
-        x = x * y2; n++;    
-    }
-    printf( "%d\n", n );
-    return 0; 
+#include <string.h>
+#include<iostream>
+using namespace std;
+
+int main()
+{
+ 
+    int i = 1;
+    // cout << i++ << ++i << endl;  // 1,2
+    cout << ++i << i++ << endl;     // 2,2   
+    printf("%d,%d\n", ++i, ++i);    //3,3
+    printf("%d,%d\n", ++i, i++);    //5,3
+    printf("%d,%d\n", i++, i++);    //6,5
+    printf("%d,%d\n", i++, ++i);    //8,9
+    // system("pause");
+    return 0;
 }
