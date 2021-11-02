@@ -1,6 +1,6 @@
 // 题目
 /*
-i++与++i的区别
+i++与++i的区别及二者的实现
 */
 
 // 解答
@@ -18,4 +18,21 @@ i++
     将本地变量中的数字做了相加，并且将数据压入栈
     将操作栈中的数据，再次压入到本地变量中
 但是，两者最终都会在本地变量表中加一，只是最后入栈的值不一样而已。
+
+1.++i
+int&  int::operator++（）
+{
+    *this +=1;
+    return *this;
+}
+
+2.i++
+const int int::operator（int）
+{
+    int oldValue = *this;
+    ++（*this）;
+    return oldValue;
+}
+
+
 */
