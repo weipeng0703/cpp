@@ -36,7 +36,7 @@ vector<int> findMax(vector<int>num)
     }
     while(!s.empty())
     {
-        res[s.top()]=INT_MAX;    // 如果之后没有比他大的数，输出最大值INT_MAX
+        res[s.top()]=INT_MAX;    // 如果某个数之后没有比他大的数，输出的vector中的数为最大值INT_MAX
         s.pop();
     }
 
