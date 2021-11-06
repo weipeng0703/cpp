@@ -1,28 +1,12 @@
 #include<iostream>
  using namespace std;
- class B
- {
- public:
-     B()
-     {
-         cout << "default constructor" << " ";
-     }
-     ~B()
-     {
-         cout << "destructed" << " ";
-     }
-     B(int i): data(i)
-     {
-         cout << "constructed by parameter" << data << " ";
-     } 
-     private: int data;
- }; 
- B Play( B b)
- {
-     return b;
- } 
- int main(int argc, char *argv[])
- {
-     B temp = Play(5);
-     return 0;
- }
+
+int main()
+{
+    int a = 0;
+    int b=( a = 3 * 5 , a * 4);    
+
+    cout << a << endl;    // 15
+    cout << b << endl;    // 60
+    return 0;
+}
