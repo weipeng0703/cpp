@@ -1,25 +1,20 @@
-#include <iostream>
 #include<stdio.h>
-#include<cstring>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
 using namespace std;
 
-void prim(int m, int n)   // 分解质因数
+
+int main() {
+ int a(1), b(3), c(2);
+ 
+ while (a < b < c)
  {
-     if (m >= n)
-     {
-         while (m % n) 
-            n++;
-         m /= n;
-         prim(m, n);
-         cout << n << endl;
-     }
+  ++a;
+  --b;
+  --c;
  }
-
-int main(){
-    prim(24, 2);
-    return 0;
+ cout << a << " " << b << " " << c << "\n";
+ return 0;
 }
-
-/*
-
-*/
