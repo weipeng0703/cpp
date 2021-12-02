@@ -6,19 +6,39 @@
 #include<vector>
 #include <stdio.h>
 using namespace std;
-  
-int fun(unsigned int x){
-     int n = 0;
-     while((x + 1)){
-        n++; 
-        x = x | (x + 1);
-     }
-     return n;
-}
 
-int main()
-{
-    cout << fun(2014) << endl;
-
-    return 0;
-}
+#include <iostream>
+using namespace std;
+class A{
+  int a1;
+protected:
+  int a2;
+public:
+  int a3;
+};
+class B: public A{
+  int b1;
+protected:
+  int b2;
+public:
+  int b3;
+};
+class C:private B{
+  int c1;
+protected:
+  int c2;
+public:
+  int c3;
+};
+// int main(){
+//   B obb;
+//   C obc;
+//   cout<<obb.a1;//1
+//   cout<<obb.a2;//2
+//   cout<<obb.a3;//3
+//   cout<<obc.b1;//4
+//   cout<<obc.b2;//5
+//   cout<<obc.b3;//6
+//   cout<<obc.c3;//7
+//   return 0;
+// }
