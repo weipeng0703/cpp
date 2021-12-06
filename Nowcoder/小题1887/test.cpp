@@ -8,12 +8,14 @@
 using namespace std;
 #include <stdio.h>
 
-class B{
-};
-B func(const B& rhs){
-  return rhs;
-}
-int main(int argc, char **argv){
-  B b1, b2;
-  b2 = func(b1);  //10
+char * GetWelcome(void){
+    char * pcWelcome;
+    char * pcNewWelcome;
+    pcWelcome = "Welcome to Huawei Test";
+    pcNewWelcome = (char *)malloc(strlen(pcWelcome));    //1
+    if(NULL == pcNewWelcome){
+        return NULL;        //2
+    }
+    strcpy(pcNewWelcome, pcWelcome);    //3
+    return pcNewWelcome;            //4
 }
