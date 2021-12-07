@@ -8,14 +8,22 @@
 using namespace std;
 #include <stdio.h>
 
-char * GetWelcome(void){
-    char * pcWelcome;
-    char * pcNewWelcome;
-    pcWelcome = "Welcome to Huawei Test";
-    pcNewWelcome = (char *)malloc(strlen(pcWelcome));    //1
-    if(NULL == pcNewWelcome){
-        return NULL;        //2
-    }
-    strcpy(pcNewWelcome, pcWelcome);    //3
-    return pcNewWelcome;            //4
+class Demo {
+public:
+    Demo():count(0) {}
+      ~Demo() {}
+ 
+      void say(const std::string&msg) {
+          fprintf(stderr,"%s\n", msg.c_str());
+      }   
+   private:
+      int count;
+};
+ 
+int main(int argc, char **argv) {
+    Demo* v = NULL;
+    v->say("hello world");
+
+    return 0;
 }
+
