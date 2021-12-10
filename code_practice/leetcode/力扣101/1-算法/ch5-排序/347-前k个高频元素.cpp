@@ -69,16 +69,16 @@ class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         int maxCount = 0;
+
         unordered_map<int, int> hash_map;
         for (auto num : nums) {
             hash_map[num]++;
-            // 统计每个number出现的次数，保留最大次数 建桶
+            // 统计每个number出现的次数，保留最大次数 
             maxCount = max(maxCount, hash_map[num]);
         }
 
-        // 建立桶
+        // 以最大次数建桶
         vector<vector<int>> buckets(maxCount + 1);
-
         // 将出现的 number 按照出现的次数，填入对应的桶中
         for (auto kv : hash_map) {
             int number = kv.first;
@@ -93,7 +93,7 @@ public:
             if (k == 0) break;
             // 如果当前频率的桶为空，则跳过
             if (!buckets[i].size()) continue;
-            // 不为空则要加入把桶内元素加入 res 数组, 使要找的频率 k--
+            // 不为空则把桶内元素加入 res 数组, 使要找的频率 k--
             for (int j = 0; j < buckets[i].size(); j++) {
                 int number = buckets[i][j];
                 res.push_back(number);
