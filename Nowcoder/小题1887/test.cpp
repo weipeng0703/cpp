@@ -7,19 +7,25 @@
 #include <stdio.h>
 using namespace std;
 
-void swap_in(int *a, int *b){
-  *a = *a + *b;
-  *b = *a - *b;
-  *a = *a - *b;
-}
+class HasPtr
+{
+private:
+    std::string *ps_;
+public:
+    explicit HasPtr(const std::string &s) : ps_(new std::string(s)) {};
+    ~HasPtr() {delete ps_;}
+
+};
 
 int main()
 {
-    int m = 2112340000, n = 2100001234;
-    swap_in(&m, &n);
+    HasPtr hp1 = HasPtr("cwp");
 
-    cout << m << endl;
-    cout << n << endl;
+    HasPtr hp2 = hp1;
+}  
+    
+              
 
-    return 0;
-}
+  
+
+
