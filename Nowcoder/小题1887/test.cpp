@@ -7,25 +7,15 @@
 #include <stdio.h>
 using namespace std;
 
-class HasPtr
-{
-private:
-    std::string *ps_;
-public:
-    explicit HasPtr(const std::string &s) : ps_(new std::string(s)) {};
-    ~HasPtr() {delete ps_;}
-
-};
-
 int main()
 {
-    HasPtr hp1 = HasPtr("cwp");
-
-    HasPtr hp2 = hp1;
-}  
+    string s = "tomcat";
+    unsigned int n = -1;
+    if (s.size() < n)
+    {
+        cout << "error" << endl;
+    }
     
-              
 
-  
-
-
+    return 0;
+}
