@@ -1,16 +1,16 @@
 # Effective C++
 - [Part-1.让自己习惯C++](#Part-1.让自己习惯C++)
-	- [条款01.视C++为一个语言联邦](##条款1.视C++为一个语言联邦)
-	- [条款02.尽量以const，enum，inline替换 #define](##条款2.尽量以const，enum，inline替换 #define)
-	- [条款03.尽可能使用const](条款3.尽可能使用const)
-	- [条款04.确认对象被使用前已经被初始化](条款4.确认对象被使用前已经被初始化)
+	- [条款01.视C++为一个语言联邦](#条款1.视C++为一个语言联邦)
+	- [条款02.尽量以const，enum，inline替换 #define](#条款2.尽量以const，enum，inline替换#define)
+	- [条款03.尽可能使用const](#条款3.尽可能使用const)
+	- [条款04.确认对象被使用前已经被初始化](#条款4.确认对象被使用前已经被初始化)
 - [Part-2.构造/析构/赋值运算](#Part-2.构造/析构/赋值运算)
-	- [条款05：了解C++默默编写并调用了哪些函数](条款5：了解C++默默编写并调用了哪些函数)
+	- [条款05：了解C++默默编写并调用了哪些函数](#条款5：了解C++默默编写并调用了哪些函数)
 	- [条款06：若不想使用编译器自动生成的函数，就该明确拒绝。](#条款06：若不想使用编译器自动生成的函数，就该明确拒绝。)
 	- [条款07：为多态基类声明virtual](#条款07：为多态基类声明virtual)
 	- [条款08：别让异常逃离析构函数](#条款08：别让异常逃离析构函数)
 	- [条款09：绝不在构造和析构过程中调用virtual函数。](#条款09：绝不在构造和析构过程中调用virtual函数。)
-	- [条款10：令operator =返回一个reference to *this](#条款10：令operator =返回一个reference to *this)
+	- [条款10：令operator=返回一个reference-to-*this](#条款10：令operator=返回一个reference-to-*this)
 	- [条款11：在operator=中处理“自我赋值”](#条款11：在operator=中处理“自我赋值”)
     - [条款12：复制对象时勿忘其每一个成分](#条款12：复制对象时勿忘其每一个成分)
 - [Part-3.资源管理](#Part-3.资源管理)
@@ -25,22 +25,12 @@
     - [条款14：](#script-parameters)
     - [条款14：](#script-parameters)
     - [条款14：](#script-parameters)
-	    
-## [Script and Sample Code](#contents)
 
 ![Pix2Pix Imgs](imgs/Pix2Pix-examples.jpg)
 
-```C++
-bash run_infer_310.sh [The path of the MINDIR for 310 infer] [The path of the dataset for 310 infer] y Ascend 0
-
-asdasd
-
-asdasd
-
-```
 # [Part-1.让自己习惯C++](#contents)
 
-## [条款1.视C++为一个语言联邦](#contents)
+## [条款01.视C++为一个语言联邦](#contents)
 
 c++是多重范型编程语言，视c++包括4种次语言： 
 
@@ -52,7 +42,7 @@ c++是多重范型编程语言，视c++包括4种次语言：
 
 4：STL（template程序库，包括容器、迭代器、算法和函数对象）
 
-## [条款2.尽量以const，enum，inline替换 #define](#contents)
+## [条款02.尽量以const，enum，inline替换 #define](#contents)
 
 **const**
 
@@ -74,7 +64,7 @@ c++是多重范型编程语言，视c++包括4种次语言：
 
 对于形似函数的宏，最好改用inline函数替换#defines。
 
-## [条款3.尽可能使用const](#contents)
+## [条款03.尽可能使用const](#contents)
 
 1.令函数返回一个常量值，可以预防无意义的赋值动作（例：p19）
 
@@ -90,7 +80,7 @@ c++是多重范型编程语言，视c++包括4种次语言：
 
 2.当const和non-const成员函数有着实质等价的实现时，令non-const版本调用const版本避免代码重复（使用转型，条款27提及）
 
-## [条款4.确认对象被使用前已经被初始化](#contents)
+## [条款04.确认对象被使用前已经被初始化](#contents)
 
 1.为内置对象进行手工初始化；对于类类型，构造函数负责初始化
 
@@ -112,7 +102,7 @@ Example& emp()
 
 # [Part-2.构造/析构/赋值运算](#contents)
 
-## [条款5：了解C++默默编写并调用了哪些函数](#contents)
+## [条款05：了解C++默默编写并调用了哪些函数](#contents)
 
 编译器会主动为编写的任何类**声明**一个拷贝构造函数、拷贝复制操作符和一个析构函数，同时如果你没有声明任何构造函数，编译器也会为你声明一个默认的的拷贝构造函数，这些函数都是public且inline的。注意，上边说的是声明，只有当这些函数有调用需求的时候，编译器才会帮你去实现它们。但是编译器替你实现的函数可能在类内引用、类内指针、有const成员以及类型有虚属性的情形下会出问题。
 
@@ -166,29 +156,35 @@ x = y = z = 10;
 
 自我赋值指的是将自己赋给自己。这是一种看似愚蠢无用但却在代码中出现次数比任何人想象的多得多的操作，这种操作常常需要借指针来实现：
 
-    *pa = *pb;		 		//pa和pb指向同一对象，便是自我赋值。
-    arr[i] = arr[j];		//i和j相等，便是自我赋值
+````C++
+*pa = *pb;		 		//pa和pb指向同一对象，便是自我赋值。
+arr[i] = arr[j];		//i和j相等，便是自我赋值
+````
 
 那么对于管理一定资源的对象重载的operator= 中，一定要对是不是自我赋值格外小心并且增加预判，因为无论是深拷贝还是资源所有权的转移，原先的内存或所有权一定会被清空才能被赋值，如果不加处理，这套逻辑被用在自我赋值上会发生**先把自己的资源给释放掉了，然后又把已释放掉的资源赋给了自己**这样的错误。
 
 第一种做法是在赋值前增加预判，但是这种做法没有异常安全性，试想如果在删除掉原指针指向的内存后，在赋值之前任何一处跑出了异常，那么原指针就指向了一块已经被删除的内存。
 
-    SomeClass& SomeClass::operator=(const SomeClass& rhs) {
+````C++
+SomeClass& SomeClass::operator=(const SomeClass& rhs) {
       if (this == &rhs) 
 		return *this;  
       delete ptr;	
       ptr = new DataBlock(*rhs.ptr);				//如果此处抛出异常，ptr将指向一块已经被删除的内存。
       return *this;
     }
+````
 
 如果把异常安全性也考虑在内，那么我们就会得到如下方法，令人欣慰的是这个方法也解决了自我赋值的问题。
 
-    SomeClass& SomeClass::operator=(const SomeClass& rhs) {
-      DataBlock* pOrg = ptr;
-      ptr = new DataBlock(*rhs.ptr);				//如果此处抛出异常，ptr仍然指向之前的内存。
-      delete pOrg;
-      return *this;
-    }
+````C++
+SomeClass& SomeClass::operator=(const SomeClass& rhs) {
+  DataBlock* pOrg = ptr;
+  ptr = new DataBlock(*rhs.ptr);				//如果此处抛出异常，ptr仍然指向之前的内存。
+  delete pOrg;
+  return *this;
+}
+````
 
 另一个使用copy and swap技术的替代方案将在条款29中作出详细解释。
 
@@ -197,10 +193,12 @@ x = y = z = 10;
 1. 当给类多加了成员变量时，请不要忘记在拷贝构造函数和赋值操作符中对新加的成员变量进行处理。但如果你忘记处理，编译器也不会报错。
 2. 如果你的类有继承，那么在你为子类编写拷贝构造函数时一定要格外小心复制基类的每一个成分，这些成分往往是private的，所以你无法访问它们，你应该让**子类使用子类的拷贝构造函数去调用相应基类的拷贝构造函数**：
 
-    //在成员初始化列表显示调用基类的拷贝构造函数
-    ChildClass::ChildClass(const ChildClass& rhs) : BaseClass(rhs) {		
-      	// ...
-    }
+````C++
+//在成员初始化列表显示调用基类的拷贝构造函数
+ChildClass::ChildClass(const ChildClass& rhs) : BaseClass(rhs) {		
+  	// ...
+}
+````
 
 除此之外，拷贝构造函数和拷贝赋值操作符，他们两个中任意一个不要去调用另一个，这虽然看上去是一个避免代码重复好方法，但是是荒谬的。其根本原因在于拷贝构造函数在构造一个对象——这个对象在调用之前并不存在；而赋值操作符在改变一个对象——这个对象是已经构造好了的。因此前者调用后者是在给一个还未构造好的对象赋值；而后者调用前者就像是在构造一个已经存在了的对象。不要这么做！
 
@@ -234,7 +232,7 @@ x = y = z = 10;
 - get成员函数实现显式转换（安全，受欢迎）
 - 隐式转换函数（方便），例：
 
-````
+````C++
 class Tmp{
 public:
     ...
@@ -259,13 +257,6 @@ private:
 ## [2.尽量以const，enum，inline替换 #define](#contents)
 ## [2.尽量以const，enum，inline替换 #define](#contents)
 ## [Performance](#contents)
-
-### Training Performance on single device
-
-### Distributed Training Performance
-                                           
-
-### Evaluation Performance
 
 
 
