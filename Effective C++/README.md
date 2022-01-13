@@ -1,4 +1,5 @@
 # Effective C++
+
 - [Part-1.让自己习惯C++](#Part-1.让自己习惯C++)
 	- [条款01.视C++为一个语言联邦](#条款1.视C++为一个语言联邦)
 	- [条款02.尽量以const，enum，inline替换 #define](#条款2.尽量以const，enum，inline替换#define)
@@ -26,9 +27,9 @@
     - [条款14：](#script-parameters)
     - [条款14：](#script-parameters)
 
-![Pix2Pix Imgs](imgs/Pix2Pix-examples.jpg)
-
 # [Part-1.让自己习惯C++](#contents)
+
+![Pix2Pix Imgs](imgs/Pix2Pix-examples.jpg)
 
 ## [条款01.视C++为一个语言联邦](#contents)
 
