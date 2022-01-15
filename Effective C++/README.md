@@ -53,13 +53,13 @@
 	- [条款44：将参数无关代码抽离template](#条款44：将参数无关代码抽离template)
 	- [条款45：运用成员函数模版接收所有兼容类型](#条款45：运用成员函数模版接收所有兼容类型)
 	- [条款46：需要类型转换时请为模版定义非成员函数](#条款46：需要类型转换时请为模版定义非成员函数)
-	- [条款47：请使用traits classes表现类型信息](#条款47：请使用traits classes表现类型信息)
+	- [条款47：请使用traits classes表现类型信息](#条款47：请使用traits_classes表现类型信息)
 	- [条款48：认识模板元编程](#条款48：认识模板元编程)
 - [Part-8.定制new和delete](#Part-8.定制new和delete)
 	- [条款49：了解new-handler的行为](#条款49：了解new-handler的行为)
 	- [条款50：了解new和delete的合理替换时机](#条款50：了解new和delete的合理替换时机)
 	- [条款51：编写符合常规的new和delete](#条款51：编写符合常规的new和delete)
-	- [条款52：写了placement new也要写相应的placement delete](#条款52：写了placement new也要写相应的placement delete)
+	- [条款52：写了placement new也要写相应的placement delete](#条款52：写了placement_new也要写相应的placement_delete)
 - [Part-9.杂项讨论](#Part-9.杂项讨论)
 	- [条款53：不要轻忽编译器的警告](#条款53：不要轻忽编译器的警告) 
 	- [条款54：让自己熟悉包括TR1在内的标准程序库](#条款54：让自己熟悉包括TR1在内的标准程序库)
@@ -646,7 +646,7 @@ public:
 private:
     T* heldPtr;                            //持有的内置指针
 };
-```
+````
 
 即使声明了“泛化拷贝构造函数”和“泛化的赋值操作符”，仍然需要声明正常的拷贝构造函数和拷贝赋值操作符
 
