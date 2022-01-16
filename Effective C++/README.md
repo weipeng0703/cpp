@@ -1,5 +1,7 @@
 # Effective C++（第三版）
 
+![Imgs](imgs/Effective_C++.png)
+
 - [Part-1.让自己习惯C++](#Part-1.让自己习惯C++)
 	- [条款01.视C++为一个语言联邦](#条款1.视C++为一个语言联邦)
 	- [条款02.尽量以const，enum，inline替换 #define](#条款2.尽量以const，enum，inline替换#define)
@@ -66,8 +68,6 @@
 	- [条款55：让自己熟悉Boost](#条款55：让自己熟悉Boost)
 
 # [Part-1.让自己习惯C++](#contents)
-
-![Pix2Pix Imgs](imgs/Pix2Pix-examples.jpg)
 
 ## [条款01.视C++为一个语言联邦](#contents)
 
