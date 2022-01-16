@@ -1,6 +1,6 @@
 # Effective C++（第三版）
 
-![Imgs](imgs/Effective_C++.png)
+![Imgs](imgs/1.png)
 
 - [Part-1.让自己习惯C++](#Part-1.让自己习惯C++)
 	- [条款01.视C++为一个语言联邦](#条款1.视C++为一个语言联邦)
