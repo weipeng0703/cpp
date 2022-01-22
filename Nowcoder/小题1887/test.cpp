@@ -8,10 +8,16 @@
 #include<iomanip>
 using namespace std;
 
-#include <iostream>
-using namespace std;
+void print(char *s){ 
+    if(*s){
+        print(++s);
+        printf("%c", *s);  
+    }
+}
 
-int main() {
+int main(){      
+    char str[] = "Geneius";
+    print (str);
 
     return 0;
-}
+}  
