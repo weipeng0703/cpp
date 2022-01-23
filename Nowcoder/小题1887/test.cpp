@@ -8,16 +8,29 @@
 #include<iomanip>
 using namespace std;
 
-void print(char *s){ 
-    if(*s){
-        print(++s);
-        printf("%c", *s);  
-    }
+#include <iostream>
+using namespace std;
+void (*function)(float);
+
+void One(float one)
+{ 
+    cout<<"1"<<endl;    
 }
-
-int main(){      
-    char str[] = "Geneius";
-    print (str);
-
-    return 0;
-}  
+void Two(float two)
+{ 
+    cout<<"2"<<endl; 
+}
+void Three(float three)
+{ 
+    cout<<"3"<<endl; 
+}
+int main() 
+{  
+    float i=1,j=2,k=3;
+   function = One;
+   function(i);
+   function= Two;
+   function(j);
+   function = Three;
+   function(k);
+}
