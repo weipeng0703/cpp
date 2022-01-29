@@ -14,13 +14,14 @@
 using namespace std;
 
 /**
- * Definition for singly-linked list.
- * struct ListNode {
+ * Definition for a binary tree node.
+ * struct TreeNode {
  *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 // 1.递归
@@ -39,7 +40,7 @@ public:
         int root = pre_head;
         // 因为之前main函数中已经构建好关于中序的哈希表了，我们想利用先序遍历中已知第一个数为根节点去找中序遍历中该节点在哪里
         int root_index_inorder = index[preorder[root]];
-        TreeNode* ans = new TreeNode(preorder[root]);
+        TreeNode* ans = new TreeNode(preorder[root]);       // new TreeNode(inorder[root_index_inorder也可])
         int size_left_tree = root_index_inorder - in_head;
 
         // 如下两行确定参数只需要注意：
