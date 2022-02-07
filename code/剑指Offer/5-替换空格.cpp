@@ -43,7 +43,7 @@ public:
         }
         int new_size = n + 2 * blank_num;
 
-        int indexOfOriginal = n + 1;
+        int indexOfOriginal = n + 4;
         int indexOfNew = new_size;
         while (indexOfOriginal >= 0 && indexOfNew > indexOfOriginal)
         {

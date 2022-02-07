@@ -49,7 +49,6 @@ public:
         else if(l1->val >= l2->val)
             l2->next = mergeTwoLists(l1, l2->next);
             return l2;
-        
     }
 };
 
