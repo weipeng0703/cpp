@@ -21,55 +21,51 @@
 #include<stack>
 #include<priority_queue>
 using namespace std;
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-// 广搜
 class Solution {
 public:
-    int findBottomLeftValue(TreeNode* root) {
-        if (root->left == nullptr && root->right == nullptr)
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> ans;
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        if (n < 3)
         {
-            return root->val;
+            return ans;
         }
-        queue<TreeNode*> q;
-        int res = 0;
-        q.push(root);
 
-        while (!q.empty())
+        for (int i = 0; i < n; i++)
         {
-            int size = q.size();
-            // 对每一层进行遍历
-            for (int i = 0; i < size; i++)
+            // 不需要新建一个数组保存结果v
+            // ector<int> temp;
+
+            // nums[j]需要和上一次枚举的数不相同
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int k = n - 1;
+            int target = -nums[i];
+
+            for (int j = i + 1; j < n; j++)
             {
-                TreeNode* node = q.front();
-                // 注意队列没有top()，队首是.front()
-                // TreeNode* node = q.top();
-                q.pop();
-                // 利用队列先进先出的性质，第一个进入队列的必然是当前层最左边的节点
-                // 因此其也是第一个出队的节点
-                if (i == 0)
-                {
-                    res = node->val;
+                // nums[k]需要和上一次枚举的数不相同
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    continue;
                 }
-                if (node->left != nullptr)
-                {
-                    q.push(node->left);
+                 while (j < k && nums[j] + nums[k] > target) {
+                    --k;
                 }
-                if (node->right != nullptr)
+                if(j == k)
                 {
-                    q.push(node->right);
+                    break;
+                }
+                if(nums[j] + nums[k] == target)
+                {
+                    // 不需要再额外开辟空间记录答案
+                    ans.push_back({nums[i], nums[j], nums[k]});    
+                }
                 }
             }
-        }
-        return res;
+            
+        return ans;
     }
 };
