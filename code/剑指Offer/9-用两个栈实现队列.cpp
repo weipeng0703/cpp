@@ -45,3 +45,53 @@ private:
     stack<int> stack1;
     stack<int> stack2;
 };
+
+class CQueue {
+public:
+    // 注意：两个栈需要先初始化
+    CQueue() {
+         while (!stk1.empty()) {
+            stk1.pop();
+        }
+        while (!stk2.empty()) {
+            stk2.pop();
+        }
+    }
+    void stack1tostack2(){
+        if (stk2.empty())
+        {
+            while (!stk1.empty())
+            {
+                int temp = stk1.top();
+                stk1.pop();
+                stk2.push(temp);
+            }
+        }
+    }
+    
+    void appendTail(int value) {
+        stk1.push(value);
+    }
+    
+    int deleteHead() {
+        stack1tostack2();
+        // 注意判断栈2是否为空
+        if(stk2.empty())
+        {
+            return -1;
+        }
+        int temp = stk2.top();
+        stk2.pop();
+        return temp;
+    }
+private:
+    stack<int> stk1;
+    stack<int> stk2;
+};
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * CQueue* obj = new CQueue();
+ * obj->appendTail(value);
+ * int param_2 = obj->deleteHead();
+ */
