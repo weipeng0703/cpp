@@ -51,6 +51,7 @@ public:
         ListNode* pre = nullptr;
         ListNode* curr = head;
 
+        // 迭代法翻转链表
         while (curr != nullptr)
         {
             ListNode* temp = curr->next;
@@ -58,7 +59,7 @@ public:
             pre = curr;
             curr = temp;
         }
-        
+        // 进行完上面的反转过程后，curr指向空，pre指向最初链表的最后一位
         vector<int> ans;
         while (pre != nullptr)
         {

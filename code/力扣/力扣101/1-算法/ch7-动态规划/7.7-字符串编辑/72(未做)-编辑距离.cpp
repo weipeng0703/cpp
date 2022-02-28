@@ -28,7 +28,7 @@ public:
             return -1;
         }
         int n = coins.size();
-        // 注意：dp大小设置为amount + 1，
+        // 注意：dp大小设置为amount + 1，代表数据和为 i 时的数组内成员个数
         vector<int> dp(amount + 1, amount + 1);
         dp[0] = 0;
         for (int i = 1; i <= amount; i++)
