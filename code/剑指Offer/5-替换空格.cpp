@@ -13,52 +13,24 @@
 #include<iomanip>
 #include<algorithm>
 using namespace std; 
-// 1.直接从前往后遍历进行替换
-// 时间复杂度：对于含有n个字符的字符串，对于每个空格，需要移动后面O(n)个字符，所以
-// 时间效率是O(n的平方)
-
-// 2.从后往前进行替换
+// 利用C++特性
 class Solution {
 public:
-    /**
-     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
-     *
-     * 
-     * @param s string字符串 
-     * @return string字符串
-     */
     string replaceSpace(string s) {
-        // write code here
-        int n = 0;
-        int blank_num = 0;
-        int temp = 0;
-        while (s[temp] != '\0')
+        string ans;
+        for (auto& c : s)
         {
-            n++;
-            if (s[temp] == ' ')
+            if (c == ' ')
             {
-                blank_num++;
-            }
-            temp++;
-        }
-        int new_size = n + 2 * blank_num;
-
-        int indexOfOriginal = n + 4;
-        int indexOfNew = new_size;
-        while (indexOfOriginal >= 0 && indexOfNew > indexOfOriginal)
-        {
-            if (s[indexOfOriginal] == ' ')
-            {
-                s[indexOfNew--] = '0';
-                s[indexOfNew--] = '2';
-                s[indexOfNew--] = '%';
+                ans.push_back('%');
+                ans.push_back('2');
+                ans.push_back('0');
             }
             else
             {
-                s[indexOfNew--] = s[indexOfOriginal];
+                ans.push_back(c);
             }
-            indexOfOriginal--;
         }
-        return s;
+        return ans;
     }
 };

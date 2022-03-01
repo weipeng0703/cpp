@@ -13,10 +13,9 @@ using namespace std;
 // 1.按部就班
 class Solution {
 public:
-    int myAtoi(string s) {
-        // flag初始一定要设置为1
+    int strToInt(string s) {
+        // flag初始设置为1
         int res = 0, flag = 1, i = 0, n = s.length();
-        // 这个循环的方式一定要记住
         while (s[i++] == ' ');
         i--;
         // 退回到符号位

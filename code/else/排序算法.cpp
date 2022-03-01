@@ -55,8 +55,8 @@ void SelectSort(std::vector<int> &nums,int n) {
 int main() {
     vector<int> a = {34,66,2,5,95,4,46,27};
     // BubbleSort(a);      // 冒泡排序
-    // InsertSort(a, 8);    // 插入排序
-    SelectSort(a, 8);       // 选择排序
+    InsertSort(a, 8);    // 插入排序
+    // SelectSort(a, 8);       // 选择排序
     for (auto ele : a)
     {
         cout << ele << ' ';
