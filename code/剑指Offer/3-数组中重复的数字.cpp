@@ -28,27 +28,19 @@ using namespace std;
 // 1.排序遍历：将数组排序后从头到尾遍历数组即可
 class Solution {
 public:
-    /**
-     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
-     *
-     * 
-     * @param numbers int整型vector 
-     * @return int整型
-     */
-    int duplicate(vector<int>& numbers) {
-        // write code here
-        int n = numbers.size();
+    int findRepeatNumber(vector<int>& nums) {
+        int n = nums.size();
         if (n == 0)
         {
             return -1;
         }
         int ans;
-        sort(numbers.begin(), numbers.end());
+        sort(nums.begin(), nums.end());
         for (int i = 1; i < n; i++)
         {
-            if (numbers[i] == numbers[i - 1])
+            if (nums[i] == nums[i - 1])
             {
-                ans = numbers[i];
+                ans = nums[i];
                 break;
             }
         }
@@ -60,15 +52,7 @@ public:
 // 2.重排数组法
 class Solution {
 public:
-    /**
-     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
-     *
-     * 
-     * @param numbers int整型vector 
-     * @return int整型
-     */
     int duplicate(vector<int>& numbers) {
-        // write code here
         int n = numbers.size();
         if (n == 0)
         {
@@ -101,21 +85,13 @@ public:
 // 3.set集合
 class Solution {
 public:
-    /**
-     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
-     *
-     * 
-     * @param numbers int整型vector 
-     * @return int整型
-     */
-    int duplicate(vector<int>& numbers) {
-        // write code here
+    int findRepeatNumber(vector<int>& nums) {
         set<int> s;
-        for(int i=0;i<numbers.size();i++){
-            if(s.count(numbers[i])>0)
-                return numbers[i];
+        for(int i = 0; i < nums.size(); i++){
+            if(s.count(nums[i]) > 0)
+                return nums[i];
             else
-                s.insert(numbers[i]);
+                s.insert(nums[i]);
         }
         return -1;
     }

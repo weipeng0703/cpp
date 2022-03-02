@@ -52,11 +52,32 @@ void SelectSort(std::vector<int> &nums,int n) {
     }
     cout << "选择排序完成" << endl;
 }
+
+// 快排
+void QuickSort(std::vector<int> &nums,int l,int r) {
+    if (l + 1 >= r) 
+        return;
+    int first = l, last = r - 1 ,key = nums[first];
+    while (first < last) {
+        while (first < last && nums[last] >= key) last--;//右指针 从右向左扫描 将⼩于piv的放到左边
+        nums[first] = nums[last];
+        while (first < last && nums[first] <= key) first++;//左指针 从左向右扫描 将⼤于piv的放到右边
+        nums[last] = nums[first];
+    }
+    nums[first] = key;//更新piv
+
+    //以L为中间值，分左右两部分递归快排
+    QuickSort(nums, l, first); 
+    QuickSort(nums, first + 1, r);
+    cout << "快速排序完成" << endl;
+}
+
 int main() {
     vector<int> a = {34,66,2,5,95,4,46,27};
     // BubbleSort(a);      // 冒泡排序
-    InsertSort(a, 8);    // 插入排序
+    // InsertSort(a, 8);    // 插入排序
     // SelectSort(a, 8);       // 选择排序
+    QuickSort(a, 0, sizeof(a) - 1);
     for (auto ele : a)
     {
         cout << ele << ' ';
