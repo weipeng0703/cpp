@@ -24,23 +24,31 @@
 using namespace std; 
 // 1.直接遍历查找
 // 会造成数组越界，堆栈溢出（比如，递归调用层数太多）等情况引起
+
 class Solution {
 public:
-    bool Find(int target, vector<vector<int>> array) {
-        int n = array.size();       // 行数
-        int m = array[0].size();    // 列数
-
-        for (int i = 0; i < n; i++)
+    bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
+        if(matrix.size() == 0 || matrix[0].size() == 0)
         {
-            for (int j = 0; i < m; j++)
+            return false;
+        }
+        int m = matrix.size();
+        int n = matrix[0].size();
+        // 注意，如果数组为空，没法给m或n赋值，所以下面的判断无法进行
+        // 应该直接在最开始堆数组是否为直接进行判断
+        // if(m == 0 || n == 0)
+        // {
+        //     return false;
+        // }
+        for(int i = 0; i < m; i++)
+        {
+            for(int j = 0; j < n; j++)
             {
-                if (array[i][j] == target)
+                if(matrix[i][j] == target)
                 {
                     return true;
                 }
-                
             }
-            
         }
         return false;
     }
@@ -51,32 +59,26 @@ public:
 // 若该数字小于目标数字，删除该数字所在的行
 class Solution {
 public:
-    bool Find(int target, vector<vector<int> > array) {
-        int n = array.size();       // 行数
-        int m = array[0].size();    // 列数
-
-        if (n == 0 && m == 0)
+    bool findNumberIn2DArray(vector<vector<int>>& matrix, int target) {
+        if(matrix.size() == 0 || matrix[0].size() == 0)
         {
             return false;
         }
-        
-        int i = 0;
-        int j = m - 1; 
-        while (i < n && j >= 0)
+        int m = 0, n = matrix[0].size() - 1;
+        while(m < matrix.size() && n >= 0)
         {
-            if (array[i][j] == target)
+            int temp = matrix[m][n];
+            if(temp > target)
             {
+                n--;
+            }
+            else if(temp < target)
+            {
+                m++;
+            }
+            else{
                 return true;
             }
-            else if (array[i][j] > target)
-            {
-                j--;
-            }
-            else if (array[i][j] < target)
-            {
-                i++;
-            }
-            
         }
         return false;
     }
