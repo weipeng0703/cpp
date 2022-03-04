@@ -45,4 +45,41 @@ public:
         return Fib_N;
     }
 };
+// 单纯动态规划
+class Solution {
+public:
+    int fib(int n) {
+        if(n <= 1){
+            return n;
+        }
+        vector<int> dp(n + 1, 0);
+        dp[0] = 0;
+        dp[1] = 1;
+        for(int i = 2; i <= n; i++){
+            dp[i] = dp[i - 1] + dp[i - 2];
+            dp[i] %= 1000000007;
+        }
+        return dp[n];
+    }
+};
+
+// 3.动态规划 + 滚动数组
+class Solution {
+public:
+    int fib(int n) {
+        int MOD = 1000000007;
+        if (n < 2)
+        {
+            return n;
+        }
+        int p = 0, q = 0, r = 1;
+        for (int i = 2; i <= n; i++)
+        {
+            p = q;
+            q = r;
+            r = (p + q) % MOD;
+        }
+        return r;
+    }
+};
 
