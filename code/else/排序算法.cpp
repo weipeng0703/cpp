@@ -7,6 +7,7 @@
 #include<vector>
 #include <stdio.h>
 #include<iomanip>
+#include<algorithm>
 using namespace std; 
 
 void swap(int &a, int &b) {
@@ -126,13 +127,59 @@ void heap_sort(vector<int>& arr, int len) {
     }
     cout << "堆排序结束" << endl;
 }
+// 桶排序
+vector<int> bucketSort(vector<int>& nums)
+{
+    vector<int> res;
+    if (nums.empty())
+    {
+        return res;
+    }
+    // min_element与max_element在头文件algorithm中，返回数组中最大值与最小值位置的指针
+    int low = *min_element(nums.begin(), nums.end());
+    int high = *max_element(nums.begin(), nums.end());
+    int n = high - low + 1;
+    vector<int> buckets(n);
+    // 从小到大排序
+    // for (auto ele : nums)
+    // {
+    //     buckets[ele - low]++;
+    // }
+    // for (int i = 0; i < n; i++)
+    // {
+    //     for (int j = 0; j < buckets[i]; j++)
+    //     {
+    //         res.push_back(low + i);
+    //     }
+    // }
+    // 从大到小排序
+    for (auto ele : nums)
+    {
+        buckets[high - ele]++;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < buckets[i]; j++)
+        {
+            res.push_back(high - i);
+        }
+    }
+    return res;
+}
 int main() {
     vector<int> a = {34,66,2,5,95,4,46,27};
     // BubbleSort(a);      // 冒泡排序
     // InsertSort(a, 8);    // 插入排序
     // SelectSort(a, 8);       // 选择排序
     // QuickSort(a, 0, 7);      // 快速排序
-    heap_sort(a, 8);        // 堆排序
+    // heap_sort(a, 8);        // 堆排序
+
+    // vector<int> temp = bucketSort(a);    // 桶排序
+    // for (auto ele : temp)
+    // {
+    //     cout << ele << ' ';
+    // }
+
     for (auto ele : a)
     {
         cout << ele << ' ';

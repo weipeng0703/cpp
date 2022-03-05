@@ -52,6 +52,7 @@ public:
         {
             return nullptr;
         }
+        // 哈希表记录中序遍历
         for (int i = 0; i < vin.size(); i++)
         {
             index[vin[i]] = i;

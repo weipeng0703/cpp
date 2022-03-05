@@ -61,17 +61,3 @@ public:
 };
 // 时间复杂度:O(MN),M N分别为树A B的节点数
 // 空间复杂度:O(M)
-
-// 判断两树是否相同
-    bool isContainer(TreeNode* A, TreeNode* B)
-    {
-        if(A == nullptr && B == nullptr)
-        {
-            return true;
-        }
-        else if(A == nullptr || B == nullptr || A->val != B->val)
-        {
-            return false;
-        }
-        return isContainer(A->left, B->right) && isContainer(A->right, B->left);
-    }
