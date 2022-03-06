@@ -31,6 +31,8 @@ public:
 
         for (int i = 2; i < dp.size(); i++)
         {
+            // 这个地方一定要注意：i代表dp数组的第i位，对应于单词中的位置肯定是i-1
+            // 比如对于temp=1245,求第i==4时的转换方法，自然是求temp[5-1] + temp[5-2]即45是否在10和25之间
             int first = temp[i - 2] - '0';
             int second = temp[i - 1] - '0';
             if ((first * 10 + second >= 10) && (first * 10 + second <= 25))
