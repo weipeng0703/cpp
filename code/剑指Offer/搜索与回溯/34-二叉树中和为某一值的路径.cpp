@@ -40,6 +40,7 @@ public:
         }
         path.push_back(root->val);
         target -= root->val;
+        // 节点为叶节点且从根节点到该节点路径之和为target
         if (root->left == nullptr && root->right == nullptr && target == 0)
         {
             res.push_back(path);

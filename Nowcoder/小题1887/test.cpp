@@ -9,40 +9,39 @@
 #include<algorithm>
 using namespace std; 
 
-int main(){
-    vector<int> temp = {1,4,4,4,4,4,45,5,6,6,7,7};
-    // sort(temp.begin(), temp.end());
-    // reverse(temp.begin(), temp.end());
-
-    // for (auto ele : temp)
-    // {
-    //     cout << ele << " ";
-    // }
-
-    // cout << "值为4的个数为" << count(temp.begin(), temp.end(), 4);
-    // bool flag = binary_search(temp.begin(), temp.end(), 63);
-    // if (flag)
-    // {
-    //     cout << "找到" << endl;
-    // }
-    // else
-    // {
-    //     cout << "找不到" << endl;
-    // }
-    
-    // auto it1 = lower_bound(temp.begin(), temp.end(), 4);
-    // auto it2 = upper_bound(temp.begin(), temp.end(), 4);
-    // cout << *it1 << endl;
-    // cout << *it2 << endl;
-    // cout << *it2 - *it1 << endl;
-    // cout << it2 - it1 << endl;
-
-    unique(temp.begin(), temp.end());
-
-    for (auto ele : temp)
-    {
-        cout << ele << " ";
-    }
-
+#include<iostream>
+using namespace std;
+ 
+#include<iostream>
+using namespace std;
+class A{
+public:
+    int _a;
+};
+class B :virtual public A
+{
+public:
+    int _b;
+};
+class C :virtual public A
+{
+public:
+    int _c;
+};
+class D :public B, public C
+{
+public:
+    int _d;
+};
+//菱形继承和菱形虚继承的对象模型
+int main()
+{
+    D d;
+    d.B::_a = 1;
+    d.C::_a = 2;
+    d._b = 3;
+    d._c = 4;
+    d._d = 5;
+    cout << sizeof(D) << endl;
     return 0;
 }
