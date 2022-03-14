@@ -9,39 +9,21 @@
 #include<algorithm>
 using namespace std; 
 
-#include<iostream>
-using namespace std;
- 
-#include<iostream>
-using namespace std;
-class A{
+// class Base { public:  virtual void func() = 0; }; 
+
+class Base {
 public:
-    int _a;
+    virtual void func() = 0; 
 };
-class B :virtual public A
-{
+
+class Derived : public Base {
 public:
-    int _b;
+    void func() {
+        cout << "哈哈" << endl;
+    } 
 };
-class C :virtual public A
-{
-public:
-    int _c;
-};
-class D :public B, public C
-{
-public:
-    int _d;
-};
-//菱形继承和菱形虚继承的对象模型
-int main()
-{
-    D d;
-    d.B::_a = 1;
-    d.C::_a = 2;
-    d._b = 3;
-    d._c = 4;
-    d._d = 5;
-    cout << sizeof(D) << endl;
-    return 0;
+int main() {
+    Base *b = new Derived();
+    b->func(); 
+    return 0; 
 }
