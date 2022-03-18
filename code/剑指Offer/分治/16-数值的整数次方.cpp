@@ -34,9 +34,9 @@ public:
         {
             return 1.00;
         }
-        // 右移一位代表除以2
+        // 右移一位代表除以2（位移运算要比*效率高）
         double y = temp(x, n >> 1);
-        // 位运算判断奇偶数
+        // 位运算判断幂次的奇偶
         return n & 1 == 1? y * y * x : y * y;
         }
     double myPow(double x, int n) {

@@ -31,22 +31,17 @@ using namespace std;
 class Solution {
 public:
     bool recurr(vector<int>& postorder, int left, int right){
-        if (left >= right)
-        {
+        if (left >= right){
             return true;
         }
         int i;
-        for (i = left; i <= right; i++)
-        {
-            if (postorder[i] > postorder[right])
-            {
+        for (i = left; i <= right; i++){
+            if (postorder[i] > postorder[right]){
                 break;
             }
         }
-        for (int j = i; j <= right; j--)
-        {
-            if (postorder[j] < postorder[right])
-            {
+        for (int j = i; j <= right; j--){
+            if (postorder[j] < postorder[right]){
                 return false;
             }
         }
@@ -66,13 +61,20 @@ public:
     bool helpe(vector<int> &postorder, int l, int r) {
         if (l >= r) return true;
         int p = l, m = 0;
-        while (postorder[p] < postorder[r]) ++p;
-        // 切割点
-        m = p; 
-        while (postorder[p] > postorder[r]) ++p;
-        // 判断到p是否移动到最后 && 左子树是否符合要求 && 右子树是否符合要求
-        return p == r && helpe(postorder, l, m - 1) &&
-            helpe(postorder, m, r - 1);
+        while (postorder[p] < postorder[r])
+        {
+            p++;
+        }
+        m = p;
+        while (p < r)
+        {
+            ++p;
+            if (postorder[p] < postorder[r])
+            {
+                return false;
+            }
+        }
+        return helpe(postorder, l, m - 1) && helpe(postorder, m, r - 1);
     }
 
     bool verifyPostorder(vector<int>& postorder) {
