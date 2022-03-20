@@ -56,7 +56,8 @@ public:
 class Solution {
 public:
     vector<int> singleNumbers(vector<int>& nums) {
-        int temp;
+        // 一定要初始化
+        int temp = 0;
         // 求两个只出现一次的数字的异或值
         for (auto ele : nums)
         {
