@@ -1,13 +1,5 @@
 /*
-字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。
-比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"。
-
-示例 1：
-    输入: s = "abcdefg", k = 2
-    输出: "cdefgab"
-示例 2：
-    输入: s = "lrloseumgh", k = 6
-    输出: "umghlrlose"
+写一个函数 StrToInt，实现把字符串转换成整数这个功能。不能使用 atoi 或者其他类似的库函数。
 */ 
 #include<stdio.h>
 #include<stdlib.h>
@@ -20,19 +12,49 @@
 #include<iomanip>
 #include<algorithm>
 using namespace std; 
-// 利用C++特性
+// 1.利用字符流 
 class Solution {
 public:
-    string reverseLeftWords(string s, int n) {
-        string ans;
-        for (int i = n; i < s.length(); i++)
-        {
-            ans.push_back(s[i]);
-        }
-        for (int j = 0; j < n; j++)
-        {
-            ans.push_back(s[j]);
-        }
+    int strToInt(string str) {
+        int ans = 0;
+        stringstream ss(str);
+        ss >> ans;
         return ans;
+    }
+};
+
+// 2.常规按顺序求解
+// 注意的几点：
+// 1.开头越过空格
+// 2.将数据表示为 正负位*数据位 的形式
+// 3.注意数字大小是否越界
+class Solution {
+public:
+    int strToInt(string s) {
+        // flag用于记录数据正负
+        int res = 0, flag = 1, i = 0, n = s.length();
+        // 寻找非空格字符
+        while (s[i] == ' '){
+            ++i;
+        }
+        // 判断正负
+        if (i < n && (s[i] == '+' || s[i] == '-')){
+            flag = (s[i] == '+'? 1 : -1);
+            ++i;
+        }
+        // 处理数字
+        for (; i < n; i++){
+            if (s[i] >= '0' && s[i] <= '9'){
+                if (res > INT_MAX / 10 || res == INT_MAX / 10 && (s[i] - '0' > 7)){
+                    return (flag + 1 == 0)? INT_MIN : INT_MAX;
+                }
+                res = res * 10 + (s[i] - '0');
+            }
+            // 其他字符
+            else{
+                break;
+            }
+        }
+        return res * flag;
     }
 };
