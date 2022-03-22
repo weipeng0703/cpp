@@ -65,6 +65,7 @@ public:
 // 空间复杂度：O(1)。没有用到额外空间
 
 // 2.求连续区间问题，应该立刻有双指针的思路
+// 2.求连续区间问题，应该立刻有双指针的思路
 class Solution {
 public:
     vector<vector<int>> findContinuousSequence(int target) {
@@ -74,10 +75,12 @@ public:
             return ans;
         }
         vector<int> temp;
-        
+        // 利用双指针连续遍历数列
         for (int left = 1, right = 2; left < right; )
         {
+            // 等差数列的求和公式
             int sum = (left + right) * (right - left + 1) / 2;
+            // 若几个数的和等于，将这几个数放入temp，左指针右移一位开始下一个区间的遍历
             if (sum == target)
             {
                 for (int k = left; k <= right; k++)
@@ -88,10 +91,12 @@ public:
                 temp.clear();
                 ++left;
             }
+            // 之和小于sum，和有点小，右移右指针
             else if (sum < target)
             {
                 ++right;
             }
+            // 之和小于sum，和太大了，右移左指针
             else
             {
                 ++left;

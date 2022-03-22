@@ -15,7 +15,7 @@ using namespace std;
 // 1.利用字符流 
 class Solution {
 public:
-    int strToInt(string str) {
+    int cuttingRope(string str) {
         int ans = 0;
         stringstream ss(str);
         ss >> ans;
@@ -30,7 +30,7 @@ public:
 // 3.注意数字大小是否越界
 class Solution {
 public:
-    int strToInt(string s) {
+    int cuttingRope(string s) {
         // flag用于记录数据正负
         int res = 0, flag = 1, i = 0, n = s.length();
         // 寻找非空格字符
