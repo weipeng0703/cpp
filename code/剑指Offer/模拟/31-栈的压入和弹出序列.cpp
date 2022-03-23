@@ -32,19 +32,18 @@ using namespace std;
 class Solution {
 public:
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
-        if (pushed.size() != popped.size())
-        {
+        if (pushed.size() != popped.size()){
             return false;
         }
+        // 辅助栈
         stack<int> st;
         int j = 0;
         for (const auto& ele : pushed)
         {
             st.push(ele);
-            // 判断辅助栈的栈顶元素是否跟popped对应位置相同,相同则弹出,
+            // st.top() == popped[j]判断辅助栈的栈顶元素是否跟popped对应位置相同,相同则弹出,
             // j++判断popped中下一个位置是否与栈顶元素相同
-            while (!st.empty() && j < popped.size() && st.top() == popped[j])
-            {
+            while (!st.empty() && j < popped.size() && st.top() == popped[j]){
                 st.pop();
                 ++j;
             }
