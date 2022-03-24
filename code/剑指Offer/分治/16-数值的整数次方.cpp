@@ -25,7 +25,6 @@
 #include<unordered_map>
 using namespace std; 
 
-// 快速幂递归
 // 快速幂递归+两处优化(左右移与位运算)
 class Solution {
 public:

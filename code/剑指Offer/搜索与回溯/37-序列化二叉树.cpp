@@ -66,11 +66,11 @@ public:
 };
 // C++引入了ostringstream、istringstream、stringstream这三个类，要使用他们创建对象就必须包含<sstream>头文件。
 
-// istringstream类用于执行C++风格的串流的输入操作。
+// istringstream类用于执行C++风格的串流的 输入 操作。
 
-// ostringstream类用于执行C风格的串流的输出操作。
+// ostringstream类用于执行C风格的串流的 输出 操作。
 
-// strstream类同时可以支持C风格的串流的输入输出操作。
+// strstream类同时可以支持C风格的串流的 输入输出 操作。
 
 // istringstream对象可以绑定一行字符串，然后以空格为分隔符把该行分隔开来。
 
