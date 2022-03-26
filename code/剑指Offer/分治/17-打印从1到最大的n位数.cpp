@@ -58,12 +58,12 @@ public:
         for (int i = start; i < 10; i++)
         {
             curr.push_back(num[i]);
-            dfs(i + 1, n);
+            dfs(x + 1, n);
             curr.pop_back();
         }
     }
     vector<int> printNumbers(int n) {
-        for (int i = 1; i < n; i++)
+        for (int i = 1; i <= n; i++)
         {
             dfs(0, i);
         }

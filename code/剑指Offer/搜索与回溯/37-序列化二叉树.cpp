@@ -33,21 +33,31 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
  
+// C++引入了ostringstream、istringstream、stringstream这三个类，要使用他们创建对象就必须包含<sstream>头文件。
+
+// istringstream类用于执行C++风格的串流的 输入 操作。
+
+// ostringstream类用于执行C风格的串流的 输出 操作。
+
+// strstream类同时可以支持C风格的串流的 输入输出 操作。
+
+// istringstream对象可以绑定一行字符串，然后以空格为分隔符把该行分隔开来。
 class Codec {
 public:
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
         if (root == nullptr)
         {
-            return "#";
+            return "null";
         }
+        // 先序
         return to_string(root->val) + ' ' + serialize(root->left) + ' ' + serialize(root->right);
     }
 
     TreeNode* Temp(istringstream& ss){
         string temp;
         ss >> temp;
-        if (temp == "#")
+        if (temp == "null")
         {
             return nullptr;
         }
@@ -64,15 +74,6 @@ public:
         return Temp(ss);
     }
 };
-// C++引入了ostringstream、istringstream、stringstream这三个类，要使用他们创建对象就必须包含<sstream>头文件。
-
-// istringstream类用于执行C++风格的串流的 输入 操作。
-
-// ostringstream类用于执行C风格的串流的 输出 操作。
-
-// strstream类同时可以支持C风格的串流的 输入输出 操作。
-
-// istringstream对象可以绑定一行字符串，然后以空格为分隔符把该行分隔开来。
 
 
 // Your Codec object will be instantiated and called as such:

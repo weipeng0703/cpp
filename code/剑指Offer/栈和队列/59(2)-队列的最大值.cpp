@@ -73,7 +73,7 @@ public:
     }
     
     int max_value() {
-        if(d.empty()) {
+        if(d.empty() || q.empty()) {
             return -1;
         }
         return d.front();
@@ -84,7 +84,7 @@ public:
         // 则将小于 value 的元素全部出队后，再将 value 入队；
         // 否则直接入队。
         while(!d.empty() && d.back() < value) {
-            // 因为d的front是当前队列的最大值，所以pop时要从后往前pop，即pop_bac
+            // 因为d的front是当前队列的最大值，所以pop时要从后往前pop，即pop_back
             d.pop_back();
         }
         d.push_back(value);

@@ -80,7 +80,7 @@ public:
     pop 弹出队头元素
     swap 交换内容
 */
-class Solution {
+lass Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         vector<int> ans;
@@ -95,13 +95,13 @@ public:
         priority_queue<pair<int, int>> q;
         for (int i = 0; i < k; i++)
         {
-            q.emplace_back(nums[i], i);
+            q.emplace(nums[i], i);
         }
         // 第一个滑动窗口中的最大值
-        ans.emplace_back(q.top().first);
+        ans.push_back(q.top().first);
         for (int i = k; i < nums.size(); i++)
         {
-            q.push_back(nums[i], i);
+            q.emplace(nums[i], i);
             while (q.top().second <= i - k)
             {
                 q.pop();
@@ -113,6 +113,7 @@ public:
 };
 // 时间复杂度：O(nlogn)
 // 空间复杂度：O(n)，优先队列
+
 
 // 3.单调双端队列
 class Solution {
