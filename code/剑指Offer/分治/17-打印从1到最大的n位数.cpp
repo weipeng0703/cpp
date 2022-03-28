@@ -70,6 +70,7 @@ public:
         vector<int> resInt;
         for (auto ele : res)
         {
+            // 用stoi()函数直接将字符串转化为数字
             resInt.push_back(stoi(ele));
         }
         return resInt;
