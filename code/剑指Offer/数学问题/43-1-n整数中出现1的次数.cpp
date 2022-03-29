@@ -11,6 +11,7 @@
 #include<string.h>
 #include<iostream>
 #include<stack>
+#include<math.h>
 #include<set>
 #include<vector>
 #include<stdio.h>
@@ -69,5 +70,18 @@ public:
             ans += (n / (i * 10)) * i + min(max(n % (i * 10) - i + 1, 0LL), i);
         }
         return ans;
+    }
+};
+
+// 4.巧妙方法-补位
+class Solution {
+public:
+    int findNthDigit(long n) {
+        int k = 1;
+        while (k * pow(10, k) < n){
+            n += pow(10, k);
+            k += 1;
+        }
+        return to_string(n/k)[n % k] - '0';
     }
 };
