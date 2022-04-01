@@ -58,12 +58,12 @@ public:
 // 2.递归
 class Solution {
 public:
-    void swapNode(ListNode* node1, ListNode* node2){
+    ListNode* swapPairs(ListNode* head) {
         if (head == nullptr || head->next == nullptr) return nullptr;
 
-        ListNode* preHead = head->next;
-        head->next = swap(preHead->next);
-        preHead->next = head;
-        return preHead;
+        ListNode* temphead = head->next;     // temphead变为头节点
+        head->next = swapPairs(temphead->next);
+        temphead->next = head;
+        return temphead;
     }
 };
