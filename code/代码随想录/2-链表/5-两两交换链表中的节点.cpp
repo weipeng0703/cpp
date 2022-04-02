@@ -59,7 +59,7 @@ public:
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        if (head == nullptr || head->next == nullptr) return nullptr;
+        if (head == nullptr || head->next == nullptr) return head;
 
         ListNode* temphead = head->next;     // temphead变为头节点
         head->next = swapPairs(temphead->next);
