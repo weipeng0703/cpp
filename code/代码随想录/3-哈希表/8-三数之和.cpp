@@ -27,7 +27,7 @@
 #include<priority_queue>
 using namespace std; 
 
-// 1.双指针
+// 1.排序+双指针+剪枝
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
