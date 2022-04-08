@@ -36,14 +36,11 @@ class Solution {
 public:
     int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
         unordered_map<int, int> ump;
-        for (int ele1 : nums1)
-        {
+        for (int ele1 : nums1) {
             for (int ele2 : nums2) ++ump[ele1 + ele2];
         int ans = 0;
-        for (int ele3 : nums3)
-        {
-            for (int ele4 : nums4)
-            {
+        for (int ele3 : nums3) {
+            for (int ele4 : nums4) {
                 if (ump.find(0 - (ele3 + ele4)) != ump.end()) ans++;
             }
         }
