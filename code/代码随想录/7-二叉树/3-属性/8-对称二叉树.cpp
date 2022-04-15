@@ -1,4 +1,12 @@
 /*
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: weipeng
+ * @Date: 2022-04-13 10:21:00
+ * @LastEditors: weipeng
+ * @LastEditTime: 2022-04-15 08:53:48
+ */
+/*
 力扣101. 对称二叉树
 给你一个二叉树的根节点 root ， 检查它是否轴对称。
 
@@ -55,11 +63,10 @@ public:
         if (root == nullptr) return true;
         if (root->left && !root->right) return false;
         if (!root->left && root->right) return false;
-        queue<TreeNode* node> que;
+        queue<TreeNode*> que;
         que.push(root->left);
         que.push(root->right);
 
-        // 本质跟递归相同，还是比较左子树和右子树 && 左子树左节点和右子树右节点 && 左子树右节点和右子树左节点
         while (!que.empty()) {
             TreeNode* left = que.front(); que.pop();
             TreeNode* right = que.front(); que.pop();
