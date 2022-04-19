@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-18 10:27:31
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-18 10:55:16
+ * @LastEditTime: 2022-04-19 08:59:50
  */
 /*
 力扣530. 二叉搜索树的最小绝对差
@@ -42,6 +42,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+// 注意：在有序数组（BST的中序遍历数组就是一个有序数组）求任意两数最小值差等价于相邻两数的最小值差。
 
 // 1. 对于二叉搜索树中序遍历是有序的所以根据中序遍历判断
 class Solution {
