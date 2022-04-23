@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-22 10:48:50
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-22 14:21:36
+ * @LastEditTime: 2022-04-23 16:09:10
  */
 /*
 力扣77. 组合
@@ -50,6 +50,7 @@ public:
             ans.push_back(temp);
             return;
         }
+        // 从单个集合中选取，i从index开始
         for (int i = index; i <= n; i++) {
             temp.push_back(i);
             backtrack(n, k, i + 1);
