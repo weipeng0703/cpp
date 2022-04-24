@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-19 08:33:37
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-19 10:04:56
+ * @LastEditTime: 2022-04-23 21:32:59
  */
 /*
 力扣701. 二叉搜索树中的插入操作
@@ -40,7 +40,10 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-// 注：该题可以考虑直接将节点插入到原树的空节点中(不需要修改原树结构)，也可以考虑将节点插入后再修改原树的结构
+// 注：
+// 1.该题可以考虑直接将节点插入到原树的空节点中(最好是用这个因为不需要修改原树结构)
+// 2.也可以考虑将节点插入后再修改原树的结构
+
 // 1.递归
 class Solution {
 public:

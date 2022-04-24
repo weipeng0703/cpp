@@ -4,15 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-23 15:15:25
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-23 16:06:51
- */
-/*
- * @Descripttion: 
- * @version: 1.0
- * @Author: weipeng
- * @Date: 2022-04-23 11:28:22
- * @LastEditors: weipeng
- * @LastEditTime: 2022-04-23 15:15:06
+ * @LastEditTime: 2022-04-24 09:09:13
  */
 /*
 力扣40. 组合总和 II
