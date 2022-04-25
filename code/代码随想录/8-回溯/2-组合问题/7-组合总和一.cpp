@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-23 11:28:22
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-23 15:15:06
+ * @LastEditTime: 2022-04-25 09:58:42
  */
 /*
 力扣39 组合总和
@@ -48,7 +48,7 @@ public:
     vector<int> temp;
     // 对于组合问题：
     // 如果是一个集合来求组合的话，就需要startIndex，例如：2.组合 ，4.组合总和III
-    // 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如：本题和5.电话号码的字母组合
+    // 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如 5.电话号码的字母组合
     void backtrack(vector<int> vec, int targetSum, int sum, int index) {
         if (sum > targetSum) return;
         if (sum == targetSum) {
@@ -92,7 +92,7 @@ public:
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         if (candidates.size() == 0) return ans;
-        // 将数组先排序
+        // 本题若要剪枝必须将数组先排序
         sort(candidates.begin(), candidates.end());
         backtrack(candidates, target, 0, 0);
         return ans;
