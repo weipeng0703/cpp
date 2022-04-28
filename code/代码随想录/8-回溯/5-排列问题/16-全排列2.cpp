@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-26 10:00:06
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-26 10:24:53
+ * @LastEditTime: 2022-04-28 19:50:34
  */
 /*
 力扣47. 全排列 II
@@ -68,31 +68,6 @@ public:
         vector<bool> used(nums.size(), false);
         sort(nums.begin(), nums.end());
         backtrack(nums, used);
-        return ans;
-    }
-};
-
-// 2.交换回溯
-class Solution {
-public:
-    vector<vector<int>> ans;
-    vector<int> temp;
-    void backtrack(vector<int>& nums, int index) {
-        if (index == nums.size()) {
-            ans.push_back(nums);
-            return;
-        }
-        for (int i = index; i < nums.size(); i++) {
-            // 依次交换元素位置
-            swap(nums[i], nums[index]);
-            backtrack(nums,index + 1);
-            // 回溯
-            swap(nums[i], nums[index]);
-        }
-    }
-    vector<vector<int>> permute(vector<int>& nums) {
-        if (nums.size() == 0) return ans;
-        backtrack(nums, 0);
         return ans;
     }
 };

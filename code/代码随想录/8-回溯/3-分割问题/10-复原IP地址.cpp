@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-24 10:01:23
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-24 11:21:02
+ * @LastEditTime: 2022-04-28 19:34:31
  */
 /*
 力扣93. 复原 IP 地址
@@ -47,8 +47,7 @@ public:
         // stoi()转出来的数字是int型，可能会越界
         // if (stoi(s) > 255 || stoi(s) < 0) return false;
         int num = 0;
-        for (int i = start; i <= end; i++)
-        {
+        for (int i = start; i <= end; i++) {
             // 遇到非数字字符不合法
             if (s[i] > '9' || s[i] < '0') return false;
             num = num * 10 + (s[i] - '0');
@@ -58,6 +57,7 @@ public:
     }
     // pointNum代表当前逗号的数量
     void backtrack(string& s, int index, int pointNum) {
+        // 一个IP地址中只有三个 . ，所以如果当前计数中pointNum==3，代表已经分割完了
         if (pointNum == 3) {
             if (isValid(s, index, s.size() - 1)) ans.push_back(s);
         }

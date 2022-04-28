@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-27 19:07:21
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-28 11:34:20
+ * @LastEditTime: 2022-04-28 19:52:17
  */
 /*
 力扣332. 重新安排行程
@@ -50,7 +50,7 @@ public:
                 target.second++;
             }
         }
-            return false;
+        return false;
     }
     vector<string> findItinerary(vector<vector<string>>& tickets) {
         if (tickets.size() == 0) return ans;
