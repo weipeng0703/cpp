@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-29 11:21:23
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-29 11:44:09
+ * @LastEditTime: 2022-04-29 13:28:02
  */
 /*
 力扣53. 最大子数组和
@@ -65,7 +65,7 @@ public:
         for (int i = 0; i < nums.size(); i++){
             temp += nums[i];
             if (temp > ans) ans = temp;
-            // 如果temp < 0,令他为0，从下一个数字开始计数
+            // 如果temp < 0,令他为0，从下一个数字开始重新计算子序和
             if (temp <= 0) temp = 0;
         }
         return ans;

@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-29 09:12:19
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-29 09:45:10
+ * @LastEditTime: 2022-04-29 13:25:01
  */
 /*
 力扣455. 分发饼干
@@ -73,9 +73,7 @@ public:
         sort(s.begin(), s.end());
         int index = 0;
         for (int i = 0; i < s.size(); i++) {
-            if (index < g.size() && s[i] >= g[index]) {
-                index++;
-            }
+            if (index < g.size() && s[i] >= g[index]) index++;
         }
         return index;
     }
