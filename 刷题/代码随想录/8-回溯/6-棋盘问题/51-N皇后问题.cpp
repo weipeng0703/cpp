@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-27 19:07:21
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-28 19:59:37
+ * @LastEditTime: 2022-05-01 09:18:28
  */
 /*
 力扣51. N 皇后
@@ -57,11 +57,11 @@ public:
             ans.push_back(path);
             return;
         }
-        // 因为对于符合要求的结果，每一行必定只有一个皇后
-        // 所以在确定完改行的皇后位置后，便可以直接去下一行
         for (int col = 0; col < n; col++) {
             if (isValid(row, col, path, n)) {
                 path[row][col] = 'Q';
+                // 对于符合要求的结果，每一行必定只有一个皇后
+                // 所以在确定完某一行的皇后位置后，便可以直接去确定下一行的皇后
                 backtrack(n, row + 1, path);
                 path[row][col] = '.';
             }
@@ -70,7 +70,7 @@ public:
     
     vector<vector<string>> solveNQueens(int n) {
         if (n == 0) return ans;
-        // 1.初始化一个路径数组，其元素为n行n列的.
+        // 1.初始化一个路径数组，其元素为n个. ，他们组成最终结果的某一行
         vector<string> path(n, string(n, '.'));
         // 2.回溯判断是否将.变为Q
         backtrack(n, 0, path);
