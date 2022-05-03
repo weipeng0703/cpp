@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-01 10:49:57
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-01 14:13:49
+ * @LastEditTime: 2022-05-03 09:22:32
  */
 /*
 力扣134. 加油站
@@ -51,6 +51,8 @@
 #include<unordered_map>
 #include<priority_queue>
 using namespace std; 
+
+// 注：for循环适合模拟从头到尾的遍历，而while循环适合模拟环形遍历
 
 // 1.暴力+剪枝（超时）
 class Solution {

@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-02 19:55:13
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-02 20:58:33
+ * @LastEditTime: 2022-05-03 10:34:00
  */
 /*
 力扣406. 根据身高重建队列
@@ -75,7 +75,7 @@ public:
             int pos = people[i][1];
             // 将people[i]这个元素对插入到que.begin() + pos位置
             list<vector<int>>::iterator it = que.begin();
-            while (pos--) it++;
+            while (pos--) it++;     // 确定插入的位置
             que.insert(it, people[i]);
         }
         return vector<vector<int>> (que.begin(), que.end());
