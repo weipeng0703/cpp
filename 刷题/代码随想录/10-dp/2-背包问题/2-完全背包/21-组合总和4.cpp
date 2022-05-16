@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-12 10:56:31
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-12 11:24:24
+ * @LastEditTime: 2022-05-16 08:18:42
  */
 /*
 力扣377. 组合总和 Ⅳ
@@ -43,9 +43,11 @@
 #include<priority_queue>
 using namespace std; 
 
-// 注：因为是排列问题，该题一定要先遍历背包再遍历元素
+// 虽然题目是组合总和，但是顺序不同也是不同的答案，所以本质上是排列问题
+// 排列问题，要先遍历背包再遍历元素
 // 如果求组合数就是外层for循环遍历物品，内层for遍历背包。
 // 如果求排列数就是外层for遍历背包，内层for循环遍历物品。
+
 // 1. dp-完全背包
 class Solution {
 public:
