@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-16 19:34:26
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-16 20:07:39
+ * @LastEditTime: 2022-05-16 20:10:33
  */
 /*
 力扣139. 单词拆分
@@ -42,7 +42,7 @@ using namespace std;
 // step1.dp[i]表示截止到第i位,s.substr(0, i)能否被字典表示
 // step3.dp[i] =  if([j, i] 这个区间的子串出现在字典里 && dp[j]是true) 那么 dp[i] = true。
 
-// 1. dp完全背包
+// 1. dp完全背包.先背包后物品
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
