@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-20 09:56:16
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-20 10:19:36
+ * @LastEditTime: 2022-05-22 22:21:56
  */
 /*
 力扣300. 最长递增子序列
@@ -49,7 +49,8 @@ public:
         vector<int> dp(nums.size(), 1);
         
         for (int i = 1; i < nums.size(); i++) {
-            if (nums[i] > nums[i - 1]) dp[i] = dp[i - 1] + 1;   // 只需要跟自身前一个数比
+            // 跟T-41的唯一差别，这道题nums中的每个数只需要跟自身前一个数比
+            if (nums[i] > nums[i - 1]) dp[i] = dp[i - 1] + 1;
         }
         sort(dp.begin(), dp.end());
         return dp[dp.size() - 1];
