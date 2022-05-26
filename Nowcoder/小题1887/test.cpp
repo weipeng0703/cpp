@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-01-11 20:11:55
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-25 21:55:16
+ * @LastEditTime: 2022-05-26 22:20:50
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -17,27 +17,29 @@
 #include<algorithm>
 // #include<priority_queue>
 #include <memory>
-using namespace std; 
+
+#include <vector>
+#include <iostream> 
 using namespace std;
 
-class A {
-public:
-    int i;
-    virtual void fun() { }
-};
+#include <iostream>
+#include <tuple>
+#include <string>
+#include <vector>
+using namespace std;
 
-int main(void) {
-    //类中有虚函数就会有虚函数表指针的存在，这个指针指向虚函数表开始地址，而每个虚函数表指针指向各自虚函数
-    A a;
-    int length = 0;
-    length = sizeof(a);
-    cout << length << endl;
+#include <stdio.h>
 
-    char *p1 = (char*) & a;
-    char *p2 = (char*) & (a.i);
+int func(int param1 ,int param2,int param3){
+        int var1 = param1;
+        int var2 = param2;
+        int var3 = param3;
 
-    if (p1 == p2) cout << "虚函数表指针位于对象内存末尾" << endl;
-    else cout << "虚函数表指针位于对象内存开始" << endl;
+        printf("var1=%d,var2=%d,var3=%d",var1,var2,var3);
+        return var1;
+}
 
-    return 0;
+int main(int argc, char* argv[]) {
+        int result = func(1,2,3);
+        return 0;
 }

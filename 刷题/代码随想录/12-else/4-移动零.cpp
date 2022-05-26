@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-26 15:02:52
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-26 15:08:33
+ * @LastEditTime: 2022-05-26 15:10:49
  */
 
 /*
@@ -49,6 +49,5 @@ public:
             }
         }
         for (int i = left + 1; i < nums.size(); i++) nums[left] = 0;
-        
     }
 };
