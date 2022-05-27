@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-01-11 20:11:55
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-26 22:20:50
+ * @LastEditTime: 2022-05-27 17:46:24
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -30,16 +30,33 @@ using namespace std;
 
 #include <stdio.h>
 
-int func(int param1 ,int param2,int param3){
-        int var1 = param1;
-        int var2 = param2;
-        int var3 = param3;
 
-        printf("var1=%d,var2=%d,var3=%d",var1,var2,var3);
-        return var1;
-}
+#include <iostream>
+#include <string>
+using namespace std;
 
-int main(int argc, char* argv[]) {
-        int result = func(1,2,3);
-        return 0;
+class ADT {
+    int i;
+    int j;
+public:
+    ADT() {
+        i = 10;
+        j = 100;
+        cout << "ADT construct i = " << i << ", j = "<<j <<endl;
+    }
+    ~ADT(){
+        cout << "ADT destruct" << endl;
+    }
+};
+int main() {
+    char *p = new(nothrow) char[sizeof(ADT) + 1];
+    if (p == NULL) cout << "alloc failed" << endl;
+    ADT *q = new(p) ADT; //placement new:不必担心失败，只要p所指对象的的空间足够ADT创建即可
+    delete q;//错误!不能在此处调用delete q;
+    q->ADT::~ADT();//显示调用析构函数
+    delete[] p;
+    return 0; 
 }
+//输出结果：
+// ADT construct i = 10, j = 100
+// ADT destruct
