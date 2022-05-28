@@ -2,9 +2,9 @@
  * @Descripttion: 
  * @version: 1.0
  * @Author: weipeng
- * @Date: 2022-03-31 09:43:58
+ * @Date: 2022-05-28 11:46:37
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-28 11:46:29
+ * @LastEditTime: 2022-05-28 14:28:02
  */
 /*
 力扣24. 两两交换链表中的节点
@@ -44,7 +44,7 @@ public:
     ListNode* swapPairs(ListNode* head) {
         if (head == nullptr || head->next == nullptr) return nullptr;
 
-        // 使用一个哑节点
+        // 使用一个哑节点,最后的返回值是dummpyNode->next
         ListNode* dummpyNode = new ListNode(-1);
         dummpyNode->next = head;
         ListNode* temp = dummpyNode;
