@@ -1,4 +1,12 @@
 /*
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: weipeng
+ * @Date: 2022-03-31 09:11:47
+ * @LastEditors: weipeng
+ * @LastEditTime: 2022-05-29 10:36:46
+ */
+/*
 力扣206.翻转链表
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 示例 1：
@@ -62,7 +70,7 @@ public:
         ListNode* temp = cur->next;
         cur->next = pre;
 
-        reverse(cur, temp);
+        return reverse(cur, temp);
     }
     ListNode* reverseList(ListNode* head) {
         if (head == nullptr) return nullptr;

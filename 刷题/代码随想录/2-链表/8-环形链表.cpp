@@ -1,4 +1,12 @@
 /*
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: weipeng
+ * @Date: 2022-04-01 09:42:05
+ * @LastEditors: weipeng
+ * @LastEditTime: 2022-05-29 14:59:49
+ */
+/*
 力扣142.环形链表2
 给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
 */ 
@@ -22,24 +30,21 @@ struct ListNode {
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
-// 1.双指针
+// 1.快慢指针
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
         if (head == nullptr) return nullptr;
 
         ListNode* fast = head, *slow = head;
-        while (fast && fast->next)
-        {
+        while (fast && fast->next) {
             fast = fast->next->next;
             slow = slow->next;
 
-            if (fast == slow)
-            {
+            if (fast == slow) {
                 ListNode* index1 = fast;
                 ListNode* index2 = head;
-                while (index1 != index2)
-                {
+                while (index1 != index2) {
                     index1 = index1->next;
                     index2 = index2->next;
                 }
