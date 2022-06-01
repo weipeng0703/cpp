@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-31 15:56:48
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-31 16:05:21
+ * @LastEditTime: 2022-05-31 18:36:38
  */
 /*
 力扣205. 同构字符串
@@ -49,6 +49,17 @@ public:
             if (map2.find(t[i]) == map2.end()) map2[t[i]] = s[j];
             if (map1[s[i]] != t[j] || map2[t[i]] != s[j]) return false;
         }
+        return true;
+    }
+};
+
+// 2.巧妙方法——使用find()返回字符串中每个字母第一次出现的位置
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        for(int i = 0; i < s.size(); i++)
+            if(s.find(s[i]) != t.find(t[i]))
+                return false;
         return true;
     }
 };

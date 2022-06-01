@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-01-11 20:11:55
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-28 22:18:31
+ * @LastEditTime: 2022-06-01 18:25:18
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -36,19 +36,4 @@ using namespace std;
 
 #include <iostream>
 using namespace std;
-
-
-template<typename T> int printType(const T& a) ;
-
-template<>
-int printType(const int& a) {
-    return (typeid(a) == typeid(int))? 1 : 0;
-}
-
-int main(){
-    int a = printType(1.0);
-    if (a == 1) std::cout << "i am int" << std::endl;
-    else std::cout << "i am others" << std::endl;
-}
-
 

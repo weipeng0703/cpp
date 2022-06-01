@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-29 10:39:25
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-29 14:48:05
+ * @LastEditTime: 2022-05-31 18:36:39
  */
 /*
 力扣143. 重排链表
@@ -145,10 +145,10 @@ public:
         while (cur1 && cur2) {
             if (count % 2 == 0) {
                 cur->next = cur2;
-                cur2 == cur2->next;
+                cur2 = cur2->next;
             } else {
                 cur->next = cur1;
-                cur1 == cur1->next;
+                cur1 = cur1->next;
             }
             count++;
             cur = cur->next;
