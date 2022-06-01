@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-31 16:07:43
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-31 16:52:44
+ * @LastEditTime: 2022-06-01 19:09:30
  */
 /*
 力扣925. 长按键入
@@ -46,8 +46,7 @@ public:
             if (i >= 0 && name[i] == typed[j]) {
                 i++;
                 j++;
-            } else if (j > 0 && typed[j] == typed[j - 1])
-            {
+            } else if (j > 0 && typed[j] == typed[j - 1]) {
                 j++;
             } else return false;
         }
