@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-27 09:54:20
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-27 10:39:45
+ * @LastEditTime: 2022-06-01 20:33:40
  */
 /*
 力扣724. 寻找数组的中心下标
@@ -59,7 +59,7 @@ public:
         // 用这两个变量记忆左边和与右边和
         int leftSum = 0, rightSum = 0;
         for (int i = 0; i < nums.size(); i++) {
-            // 左右两边和都加上一个nums[i]
+            // 左右两边和都加上一个nums[i]，方便当前位置与下一个位置的求和
             leftSum += nums[i];
             rightSum = sum - leftSum + nums[i];
             if (leftSum == rightSum) return i;
