@@ -4,10 +4,10 @@
  * @Author: weipeng
  * @Date: 2022-06-02 15:07:22
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-02 15:48:00
+ * @LastEditTime: 2022-06-03 09:08:49
  */
 /*
-力扣给定一个 完美二叉树 ，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
+力扣116 给定一个 完美二叉树 ，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
 struct Node {
   int val;
   Node *left;
