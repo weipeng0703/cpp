@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-05-23 10:08:05
  * @LastEditors: weipeng
- * @LastEditTime: 2022-05-23 15:09:39
+ * @LastEditTime: 2022-06-04 09:01:01
  */
 
 /*
@@ -41,7 +41,7 @@ using namespace std;
 class Solution {
 public:
     int countSubstrings(string s) {
-        // dp数组判断s[i]-s[j]内的回文子串数量
+        // dp数组判断s[i]-s[j]是否为回文子串
         vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
         int ans = 0;
         // 遍历顺序是从下往上，从左往右
@@ -73,7 +73,7 @@ public:
         int size = s.size(), ans = 0;
 
         for (int i = 0; i < size; i++) {
-            // 奇数序列：以s[i]为中心往两边延申
+            // 奇数序列：以s[i]为中心往两边延申(同时可以判定单个字符是回文)
             ans += extendSubstring(s, i, i);
             // 偶数序列：以s[i]与s[i + 1]为中心向外延伸
             ans += extendSubstring(s, i, i + 1);
