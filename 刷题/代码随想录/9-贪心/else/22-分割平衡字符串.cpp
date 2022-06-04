@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-03 09:50:11
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-03 10:22:51
+ * @LastEditTime: 2022-06-04 09:30:56
  */
 /*
 力扣1221. 分割平衡字符串
@@ -55,21 +55,6 @@ public:
             if (s[i] == 'R') temp++;
             else temp--;
             if (temp == 0) ans++;
-        }
-        return ans;
-    }
-};
-// 2-遇到模式匹配的问题，其实也可以用栈的思想
-class Solution {
-public:
-    int balancedStringSplit(string s) {
-        if (s.size() == 0) return 0;
-        stack<char> st;
-        int ans = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i] == 'R') stack.push(s[i]);
-            else stack.pop();
-            if (stack.empty()) ans++;
         }
         return ans;
     }
