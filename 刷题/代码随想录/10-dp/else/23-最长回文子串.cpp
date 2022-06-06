@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-04 09:04:26
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-04 10:33:46
+ * @LastEditTime: 2022-06-06 09:29:38
  */
 /*
 力扣647. 回文子串
@@ -51,9 +51,12 @@ public:
             for (int j = i; j < s.size(); j++) {
                 string temp;
                 if (s[j] == s[i]) {
-                    if (abs(j - i) <= 1) dp[i][j] = true;
-                    else if (abs(i - j) > 1) {
-                        if (dp[i + 1][j - 1] == true) dp[i][j] = true;
+                    if (abs(j - i) <= 1) {
+                        dp[i][j] = true;
+                    } else if (abs(i - j) > 1) {
+                        if (dp[i + 1][j - 1] == true) {
+                            dp[i][j] = true;
+                        }
                     }
                 }
                 if (dp[i][j] && j - i + 1 > maxlength) {
