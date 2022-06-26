@@ -4,15 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-25 21:29:43
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-25 22:02:44
- */
-/*
- * @Descripttion: 
- * @version: 1.0
- * @Author: weipeng
- * @Date: 2022-06-25 21:16:07
- * @LastEditors: weipeng
- * @LastEditTime: 2022-06-25 21:29:15
+ * @LastEditTime: 2022-06-26 09:23:23
  */
 /*
 力扣T31. 下一个排列

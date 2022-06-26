@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-25 22:03:03
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-25 22:24:31
+ * @LastEditTime: 2022-06-26 09:23:24
  */
 /*
 力扣T463. 岛屿的周长
@@ -56,5 +56,32 @@ public:
             }
         }
         return 4 * countOne - 2 * count;
+    }
+};
+
+// 2. 挨个陆地遍历
+class Solution {
+public:
+    int direction[4][2] = {0, 1, 1, 0, -1, 0, 0, -1};
+    int islandPerimeter(vector<vector<int>>& grid) {
+        int result = 0;
+        for (int i = 0; i < grid.size(); i++) {
+            for (int j = 0; j < grid[0].size(); j++) {
+                if (grid[i][j] == 1) {
+                    for (int k = 0; k < 4; k++) {       // 上下左右四个方向
+                        int x = i + direction[k][0];
+                        int y = j + direction[k][1];    // 计算周边坐标x,y
+                        if (x < 0                       // i在边界上
+                                || x >= grid.size()     // i在边界上
+                                || y < 0                // j在边界上
+                                || y >= grid[0].size()  // j在边界上
+                                || grid[x][y] == 0) {   // x,y位置是水域
+                            result++;
+                        }
+                    }
+                }
+            }
+        }
+        return result;
     }
 };
