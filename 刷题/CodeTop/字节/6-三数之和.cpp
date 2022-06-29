@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-28 20:00:13
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-28 21:02:16
+ * @LastEditTime: 2022-06-28 21:04:20
  */
 /*
 力扣T-15. 三数之和
@@ -36,7 +36,7 @@
 #include<priority_queue>
 using namespace std; 
 
-// 1-使用两数之和等于另一个数的相反数去求（配合过滤相同元素）
+// 1-使用两数之和等于另一个数的相反数去求（配合剪枝过滤相同元素）
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -64,7 +64,7 @@ public:
     }
 };
 
-// 1.排序+双指针
+// 2.排序+双指针（配合剪枝过滤相同元素）
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
