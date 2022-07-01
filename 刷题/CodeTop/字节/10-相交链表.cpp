@@ -2,13 +2,15 @@
  * @Descripttion: 
  * @version: 1.0
  * @Author: weipeng
- * @Date: 2022-04-01 08:48:21
+ * @Date: 2022-07-01 09:47:28
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-01 10:20:43
+ * @LastEditTime: 2022-07-01 10:23:07
  */
 /*
-面试题 02.07. 链表相交
-给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
+力扣T-160. 相交链表
+给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。
+如果两个链表不存在相交节点，返回 null 。
+图示两个链表在节点 c1 开始相交：
 */ 
 #include<stdio.h>
 #include<stdlib.h>
@@ -28,38 +30,45 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+
 // 1-哈希表
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         if (headA == nullptr || headB == nullptr) return nullptr;
         unordered_set<ListNode*> s;
-        ListNode* temp = headA;
-        while (temp) {
-            s.insert(temp);
-            temp = temp->next;
+        while (headA) {
+            s.insert(headA);
+            headA = headA->next;
         }
-        temp = headB;
-        while (temp) {
-            if (s.count(temp)) return temp;
-            temp = temp->next;
+        while (headB) {
+            if (s.count(headB)) return headB;
+            headB = headB->next;
         }
         return nullptr;
     }
 };
-// 2.双指针
+
+// 2-双指针
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         if (headA == nullptr || headB == nullptr) return nullptr;
+        ListNode* A = headA;
+        ListNode* B = headB;
 
-        ListNode* A = headA, B = headB;
         while (A != B) {
-            A = A != nullptr? A->next : headB;
-            B = B != nullptr? B->next : headA;
+            A = A == nullptr? headB : A->next;
+            B = B == nullptr? headA : B->next;
         }
         return A;
     }
 };
+
+
+
+
