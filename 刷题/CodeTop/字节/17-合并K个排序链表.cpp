@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-03 14:46:49
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-03 14:52:29
+ * @LastEditTime: 2022-07-03 15:21:05
  */
 /*
 力扣T-23. 合并K个升序链表
@@ -52,10 +52,39 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-// 1-
+// 1-暴力模拟顺序合并
+// 用ans记录已经合并的链表，每次循环将下一个链表合并
 class Solution {
 public:
+    ListNode* merge2Lists (ListNode* a, ListNode* b) {
+        if (!a) return b;
+        if (!b) return a;
+        ListNode dummy;
+        ListNode* tail = &dummy;
+        // aptr与bptr用于遍历两个链表中的节点
+        ListNode *aptr = a, *bptr = b;
+        // a和b链表都还没遍历完
+        while (aptr && bptr) {
+            if (aptr->val < bptr->val) {
+                tail->next = aptr;
+                aptr = aptr->next;
+            } else {
+                tail->next = bptr;
+                bptr = bptr->next;
+            }
+            // tail继续去遍历下一个节点
+            tail = tail->next;
+        }
+        // a或b链表有一个遍历完了，将另一个剩余的直接接上
+        tail->next = aptr? aptr : bptr;
+        return dummy.next;
+    }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        sssssssss
+        ListNode* ans = nullptr;
+        if (lists.size() == 0) return ans;
+        for (int i = 0; i < lists.size(); i++) {
+            ans = merge2Lists(ans, lists[i]);
+        }
+        return ans;
     }
 };
