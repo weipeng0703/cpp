@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-03 14:46:49
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-03 14:47:23
+ * @LastEditTime: 2022-07-03 14:52:29
  */
 /*
 力扣T-23. 合并K个升序链表
@@ -56,6 +56,6 @@ struct ListNode {
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        
+        sssssssss
     }
 };
