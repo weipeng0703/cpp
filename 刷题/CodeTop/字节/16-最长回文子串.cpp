@@ -2,19 +2,14 @@
  * @Descripttion: 
  * @version: 1.0
  * @Author: weipeng
- * @Date: 2022-06-04 09:04:26
+ * @Date: 2022-07-03 10:44:43
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-03 11:36:47
+ * @LastEditTime: 2022-07-03 14:46:38
  */
 /*
-力扣647. 回文子串
-给你一个字符串 s ，请你统计并返回这个字符串中 回文子串 的数目。
-回文字符串 是正着读和倒过来读一样的字符串。
-子字符串 是字符串中的由(连续)字符组成的一个序列。
-具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。
-
-力扣5. 最长回文子串
+力扣-5. 最长回文子串
 给你一个字符串 s，找到 s 中最长的回文子串。
+
 示例 1：
     输入：s = "babad"
     输出："bab"
@@ -29,7 +24,6 @@
 #include<iostream>
 #include<stack>
 #include<set>
-#include<queue>
 #include<vector>
 #include<stdio.h>
 #include<iomanip>
@@ -65,25 +59,27 @@ public:
     }
 };
 
-// 2.双指针（中心延展法）
+// 2-双指针法（中心延展法）
 class Solution {
 public:
-    int ansleft = 0, ansright = 0, maxlength = 0;
+    int l = 0, r = 0, length = 0;
     string longestPalindrome(string s) {
+        if (s.size() == 0) return "";
         for (int i = 0; i < s.size(); i++) {
             extend(s, i, i, s.size());
             extend(s, i, i + 1, s.size());
         }
-        return s.substr(ansleft, maxlength);
+        return s.substr(l, length);
     }
     void extend(string& s, int left, int right, int n) {
         while (left >= 0 && right < n && s[left] == s[right]) {
-            if (right - left + 1 > maxlength) {
-                ansleft = left;
-                ansright = right;
-                maxlength = ansright - ansleft + 1;
+            if (right - left + 1 > length) {
+                // 如果符合条件且长度增加了，修改答案
+                l = left;
+                r = right;
+                length = r - l + 1;
             }
-            // 中心延伸
+            // 注意别延申反了(从中间向两边延申，所以left要减，right要加)
             left--;
             right++;
         }
