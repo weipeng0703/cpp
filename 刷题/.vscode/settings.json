@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "*.html": "html",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "algorithm": "cpp"
     }
 }
