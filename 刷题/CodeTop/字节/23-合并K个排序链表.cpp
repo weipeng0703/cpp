@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-03 14:46:49
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-03 15:21:05
+ * @LastEditTime: 2022-07-10 10:19:21
  */
 /*
 力扣T-23. 合并K个升序链表
@@ -52,7 +52,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-// 1-暴力模拟顺序合并
+// 1-迭代
 // 用ans记录已经合并的链表，每次循环将下一个链表合并
 class Solution {
 public:
@@ -84,6 +84,30 @@ public:
         if (lists.size() == 0) return ans;
         for (int i = 0; i < lists.size(); i++) {
             ans = merge2Lists(ans, lists[i]);
+        }
+        return ans;
+    }
+};
+
+// 2-递归
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if (!list1) return list2;
+        if (!list2) return list1;
+        if (!list2 && !list1) return nullptr;
+        if (list1->val < list2->val) {
+            list1->next = mergeTwoLists(list1->next, list2);
+            return list1;
+        } else if (list1->val >= list2->val)
+            list2->next = mergeTwoLists(list2->next, list1);
+            return list2;
+    }
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        ListNode* ans = nullptr;
+        if (lists.size() == 0) return ans;
+        for (int i = 0; i < lists.size(); i++) {
+            ans = mergeTwoLists(ans, lists[i]);
         }
         return ans;
     }
