@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-28 19:53:00
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-28 19:59:56
+ * @LastEditTime: 2022-07-11 22:27:58
  */
 /*
 力扣T-215. 数组中的第K个最大元素
@@ -39,5 +39,90 @@ public:
         else if (nums.size() == 1 && k > 1) return -1;
         sort(nums.begin(), nums.end());
         return nums[nums.size() - k];
+    }
+};
+
+// 2-利用快排的partition操作
+// 左右挖坑互填写法
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k)  {
+        int n = nums.size();
+        int l = 0;
+        int r = n - 1;
+        while (true) {
+            int idx = partition(nums, l, r);
+            if (idx == k - 1) return nums[idx];
+            else if (idx < k - 1) l = idx + 1;
+            else r = idx - 1;
+        }
+    }
+    // 左右挖坑互填
+    int partition(vector<int> & nums, int l, int r) {
+        int pivot = nums[l];
+        while (l < r) {
+            while (l < r && nums[r] <= pivot) r--;
+            nums[l] = nums[r];
+            while (l < r && nums[l] >= pivot) l++;
+            nums[r] = nums[l];
+        }
+        nums[l] = pivot;
+        return l;
+    }
+};
+// 注：如果partition()这样写则是求 TopK小 的问题
+int partition(vector<int> & nums, int l, int r) {
+    int pivot = nums[l];
+    while (l < r) {
+        while (l < r && nums[r] >= pivot) r--;
+        nums[l] = nums[r];
+        while (l < r && nums[l] <= pivot) l++;
+        nums[r] = nums[l];
+    }
+    nums[l] = pivot;
+    return l;
+}
+
+// 3-堆排序
+// （1）大根堆调库
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, less<int>> maxHeap;
+        for (int x : nums) maxHeap.push(x);
+        for (int i = 0; i < k - 1; i++) maxHeap.pop();
+        return maxHeap.top();
+    }
+};
+
+// (2)手写实现大根堆
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k)  {
+        int n = nums.size();
+        build_maxHeap(nums);
+        for (int i = 0; i < k - 1; i++) {
+            swap(nums[0], nums[n - 1 - i]);
+            adjust_down(nums, 0, n - 1 - i - 1);
+        }
+        return nums[0];
+    }
+    void build_maxHeap(vector<int> & nums) {
+        int n = nums.size();
+        for (int root = n / 2; root > -1; root--) adjust_down(nums, root, n - 1);
+    }
+
+    void adjust_down(vector<int> & nums, int root, int hi) {
+        if (root > hi) return;
+        int t = nums[root];
+        int child = 2 * root + 1;
+        while (child <= hi) {
+            if (child + 1 <= hi && nums[child] < nums[child + 1]) child++;
+            if (t > nums[child]) break;
+            nums[root] = nums[child];
+            root = child;
+            child = 2 * root + 1;
+        }
+        nums[root] = t;
     }
 };

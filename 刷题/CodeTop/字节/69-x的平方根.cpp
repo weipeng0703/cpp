@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-10 19:28:14
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-10 20:13:36
+ * @LastEditTime: 2022-07-11 22:27:52
  */
 /*
 力扣T-69. x 的平方根 
@@ -41,7 +41,7 @@ public:
         if(x == 0) return 0;
         int l = 0, r = x, ans = -1;
         while (l <= r) {
-            int mid =l + (r - l) / 2;
+            int mid = l + (r - l) / 2;
             if ((long long) mid * mid <= x) {
                 ans = mid;
                 l = mid + 1;
