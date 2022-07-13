@@ -10,6 +10,13 @@
 #include<algorithm>
 using namespace std; 
 
+// template<class T>
+// void swap(T &a, T &b) {
+//     T temp = a;
+//     a = b;
+//     b = temp; 
+//  }
+
 void swap(int &a, int &b) {
     int temp = a;
     a = b;
@@ -19,8 +26,7 @@ void swap(int &a, int &b) {
 void BubbleSort(std::vector<int> &nums) {
     for (int i = 1; i < 8; ++i) {
         for (int j = 1; j < 8 - i + 1; ++j) {
-            if (nums[j] < nums[j-1]) 
-            {
+            if (nums[j] < nums[j-1]) {
                 std::swap(nums[j], nums[j-1]);
                 }
             }
