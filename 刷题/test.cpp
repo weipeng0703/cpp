@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-05 09:17:15
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-11 21:56:47
+ * @LastEditTime: 2022-07-14 16:13:11
  */
 
 #include<stdio.h>
@@ -23,19 +23,10 @@
 using namespace std;
 
 
-//考虑内存重叠的memcpy函数
-void* memmove(void* dest, void* src, size_t num) {
-    assert(dest != NULL) && (src != NULL);
-    char* p1 = (char*)dest;
-    char* p2 = (char*)src;
-    //p1低地址, p2⾼地址
-    if(p1 < p2) {
-        for(size_t i = 0; i != num; ++i) *(p1++) = *(p2++);
-    } else {
-        //从后往前赋值
-        p1 += num - 1;
-        p2 += num - 1;
-        for(size_t i = 0; i != num; ++i) *(p1--) = *(p2--);
-    }
-    return dest;
- }
+int main() {
+
+
+    cout << double{} << endl;
+    
+    return 0;
+}
