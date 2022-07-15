@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-26 11:04:06
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-26 15:13:20
+ * @LastEditTime: 2022-07-15 22:23:04
  */
 /*
 力扣T-3. 无重复字符的最长子串
@@ -40,8 +40,7 @@ public:
         unordered_map<char, int> pos;
         int res = 0;
         vector<int> dp(s.size(), 0);
-        for (int i = 0; i < s.size(); i++)
-        {
+        for (int i = 0; i < s.size(); i++) {
             if (i == 0) dp[i] = 1;
             else if (i != 0 && pos.find(s[i]) == pos.end()) dp[i] = dp[i - 1] + 1;
             else {
@@ -60,8 +59,8 @@ public:
     }
 };
 // 2.滑动窗口
-// 利用滑动窗口也可以方便的解决这个问题，思路类似上面的解法，利用双指针，left和i，i指针遍历整个字符串，
-// 初始时left = -1，向右遍历字符串，如果没有遇到重复的字符，则不含重复字符的子字符串的长度就为i - left，一直增加。
+// 利用双指针，left和right，right指针遍历整个字符串，left只用于记录最近一次重复的位置，所以right - left即为无重复字符串的长度
+// 初始时left = -1，向右遍历字符串，如果没有遇到重复的字符，则不含重复字符的子字符串的长度就为right - left，一直增加。
 // 当出现和前面重复的字符时，将left指针移到此字符的位置，每次遇到重复的字符时，left都要更新。
 class Solution {
 public:
@@ -69,12 +68,12 @@ public:
         if (s.length() <= 1) return s.length();
         int res = 0, left = -1;
         unordered_map<char, int> pos;
-        for (int i = 0; i < s.length(); i++) {
+        for (int right = 0; right < s.length(); right++) {
             // 当遇到重复字符时，left更新到该字符上一次出现的位置
-            if (pos.find(s[i]) != pos.end()) left = max(left, pos[s[i]]);
-            // 更新该字母最新一次出现的位置
-            pos[s[i]] = i;
-            res = max(res, i - left);
+            if (pos.find(s[right]) != pos.end()) left = max(left, pos[s[right]]);
+            // 更新当前字母最新一次出现的位置
+            pos[s[right]] = right;
+            res = max(res, right - left);
         }
         return res;
     }
