@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-05 09:17:15
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-16 20:07:16
+ * @LastEditTime: 2022-07-17 10:45:05
  */
 
 #include<stdio.h>
@@ -24,30 +24,22 @@
 #include<queue>
 using namespace std;
 
-#include <iostream>
-using namespace std;
-
-int g_constructCount = 0;
-int g_copyConstructCount = 0;
-int g_destructCount = 0;
-struct A {
-    A(){
-        cout << "construct: " << ++g_constructCount << endl;    
+class A {
+public:
+    A():m_ptr(new int(0)){cout << "construct" << endl;}
+    A(const A& a):m_ptr(new int(*a.m_ptr)) //深拷贝的拷贝构造函数
+    {
+        cout << "copy construct" << endl;
     }
-    
-    A(const A& a) {
-        cout << "copy construct: " << ++g_copyConstructCount << endl;
-    }
-    ~A() {
-        cout << "destruct: " << ++g_destructCount << endl;
-    }
+    ~A(){ delete m_ptr;}
+private:
+    int* m_ptr;
 };
-
 A GetA() {
     return A();
 }
-
 int main() {
     A a = GetA();
+    A a = A();
     return 0;
 }
