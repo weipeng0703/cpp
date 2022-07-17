@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-13 09:49:58
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-13 10:39:12
+ * @LastEditTime: 2022-07-16 15:50:43
  */
   // https://www.runoob.com/w3cnote/heap-sort.html
 #include<stdio.h>
@@ -26,8 +26,6 @@ void InsertSort(std::vector<int> &nums,int n) {
             std::swap(nums[j],nums[j-1]);
         }
     }
-    cout << endl;
-    cout << "插入排序完成" << endl;
 }
 
 int main() {
@@ -35,7 +33,8 @@ int main() {
     for (auto ele : a) cout << ele << ' ';
 
     InsertSort(a, a.size());
-
+    cout << endl;
+    cout << "插入排序完成" << endl;
     for (auto ele : a) cout << ele << ' ';
     return 0; 
  }

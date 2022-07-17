@@ -20,6 +20,8 @@
         "iomanip": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "chrono": "cpp",
+        "set": "cpp"
     }
 }
