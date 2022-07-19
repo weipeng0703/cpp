@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-03 09:33:43
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-03 11:22:51
+ * @LastEditTime: 2022-07-18 22:15:21
  */
 /*
 力扣-53. 最大子数组和
@@ -36,7 +36,26 @@
 #include<priority_queue>
 using namespace std; 
 
-// 1. dp
+// 1-暴力(有些样例超时)
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        if (nums.size() == 0) return 0;
+        int ans = INT_MIN;
+        for (int i = 0; i < nums.size(); i++) {
+            int sum = 0;
+            for (int j = i; j < nums.size(); j++) {
+                sum += nums[j];
+                if (sum > ans) ans = sum;
+            }
+        }
+        return ans;
+    }
+}; 
+
+// 2-dp
+// dp[i]的定义：包括下标i之前的最大连续子序列和为dp[i]。
+// 那么我们要找最大的连续子序列，就应该找每一个以为nums[i]为终点的连续最大子序列。
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
@@ -52,7 +71,7 @@ public:
     }
 };
 
-// 2-贪心
+// 3-贪心
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
@@ -67,3 +86,5 @@ public:
         return ans;
     }
 }; 
+
+4-分治
