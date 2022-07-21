@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-05 09:17:15
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-17 10:45:05
+ * @LastEditTime: 2022-07-21 10:32:30
  */
 
 #include<stdio.h>
@@ -24,22 +24,11 @@
 #include<queue>
 using namespace std;
 
-class A {
-public:
-    A():m_ptr(new int(0)){cout << "construct" << endl;}
-    A(const A& a):m_ptr(new int(*a.m_ptr)) //深拷贝的拷贝构造函数
-    {
-        cout << "copy construct" << endl;
-    }
-    ~A(){ delete m_ptr;}
-private:
-    int* m_ptr;
-};
-A GetA() {
-    return A();
+void test(string& s){
+    s = "shit";
 }
-int main() {
-    A a = GetA();
-    A a = A();
-    return 0;
+int main(){
+    string s = "test";
+    test(s);
+	cout << s << endl;
 }

@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-17 09:04:31
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-17 10:03:17
+ * @LastEditTime: 2022-07-20 20:19:19
  */
 /*
 力扣105. 从前序与中序遍历序列构造二叉树
@@ -30,7 +30,7 @@
 #include<priority_queue>
 using namespace std; 
 
-Definition for a binary tree node.
+// Definition for a binary tree node.
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -45,17 +45,17 @@ class Solution {
 private:
     unordered_map<int, int> index;
 public:
-    TreeNode* helper(vector<int>& preorder, vector<int>& inorder, int pre_head, int pre_tail, int in_head, int in_tail)
-    {
+    TreeNode* helper(vector<int>& preorder, vector<int>& inorder, int pre_head, int pre_tail, int in_head, int in_tail) {
         if (pre_head > pre_tail) return nullptr;
         int root = pre_head;
-        // 因为之前main函数中已经构建好关于中序的哈希表了，我们想利用先序遍历中已知第一个数为根节点去找中序遍历中该节点在哪里
+        // 因为之前main函数中已经构建好关于中序的哈希表了，
+        // 我们想利用先序遍历中已知第一个数为根节点去找中序遍历中该节点在哪里
         int root_index_inorder = index[preorder[root]];     // 中序序列中头节点所在的位置
         TreeNode* ans = new TreeNode(preorder[root]);       // 以头节点构造新树
         int size_left_tree = root_index_inorder - in_head;  // 树的左子树大小为中序中根节点位置-中序开头的位置
-
+        // 利用两个序列构造左子树
         ans->left = helper(preorder, inorder, pre_head + 1, pre_head + size_left_tree, in_head, root_index_inorder - 1);
-        
+        // 利用两个序列构造右子树
         ans->right = helper(preorder, inorder, pre_head + 1 + size_left_tree, pre_tail, root_index_inorder + 1, in_tail);
 
         return ans;

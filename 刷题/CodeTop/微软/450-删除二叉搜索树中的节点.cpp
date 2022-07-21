@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-01 10:23:44
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-19 22:54:08
+ * @LastEditTime: 2022-07-19 22:59:42
  */
 /*
 力扣T-450. 删除二叉搜索树中的节点
@@ -96,10 +96,10 @@ public:
         if (root == nullptr) return nullptr;
         // 2.树中有该节点
         if (root->val == key) {
-            // 2.递归到最后返回空节点
+            // (2).递归到最后返回空节点
             if (!root->right) return root->left;
             TreeNode* node = root->right;
-            // 1.不断将要删除的节点向右子树的最左下方移动
+            // (1).不断将要删除的节点向右子树的最左下方移动
             while (node->left) node = node->left;
             swap(root->val, node->val);
         }
