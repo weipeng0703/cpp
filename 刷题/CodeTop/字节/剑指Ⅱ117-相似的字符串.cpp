@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-07-19 09:56:17
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-19 10:37:52
+ * @LastEditTime: 2022-07-23 09:44:45
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<queue>
+using namespace std; 
 /*
 力扣-剑指 Offer II 117. 相似的字符串
 如果交换字符串 X 中的两个不同位置的字母，使得它和字符串 Y 相等，那么称 X 和 Y 两个字符串相似。
@@ -27,19 +40,6 @@
     输入：strs = ["omv","ovm"]
     输出：1
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
 
 // 1-BFS
 // 通过BFS计算相似字符串的集合个数
@@ -99,7 +99,7 @@ public:
     void dfs(vector<string>& strs, vector<bool>& isVisited, int cur) {
         isVisited[cur] = true;
         for (int j = 0; j < strs.size(); j++) {
-            if (isSimilar(strs[i], strs[j]) && !isVisited[j]) dfs(strs, isVisited, j);
+            if (isSimilar(strs[cur], strs[j]) && !isVisited[j]) dfs(strs, isVisited, j);
         }
     }
     int numSimilarGroups(vector<string>& strs) {

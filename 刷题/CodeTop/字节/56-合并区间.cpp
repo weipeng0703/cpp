@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-20 15:25:51
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-20 16:07:47
+ * @LastEditTime: 2022-07-23 11:04:18
  */
 /*
 力扣-56. 合并区间
@@ -35,9 +35,10 @@
 using namespace std; 
 
 // 1-贪心
+// 1-贪心
 class Solution {
 public:
-    static bool cmp(vector<int>& a, vector<int>& a) { return a[0] < b[0];}
+    static bool cmp(vector<int>& a, vector<int>& b) { return a[0] < b[0];}
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         vector<vector<int>> ans;
         if (intervals.size() == 0) return ans;
@@ -46,7 +47,24 @@ public:
         // 依次比较intervals[i][0]与答案数组末尾的数据ans.back()[1]的大小
         for (int i = 1; i < intervals.size(); i++) {
             if (ans.back()[1] >= intervals[i][0]) ans.back()[1] = max(ans.back()[1], intervals[i][1]);
-        } else ans.push_back(intervals[i]);
+            else ans.push_back(intervals[i]);
+        }
+        return ans;
+    }
+};
+// 2-贪心+lambda表达式
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        vector<vector<int>> ans;
+        if (intervals.size() == 0) return ans;
+        sort(intervals.begin(), intervals.end(), [&](vector<int>& a, vector<int>& b) {return a[0] < b[0];});
+        ans.push_back(intervals[0]);
+        // 依次比较intervals[i][0]与答案数组末尾的数据ans.back()[1]的大小
+        for (int i = 1; i < intervals.size(); i++) {
+            if (ans.back()[1] >= intervals[i][0]) ans.back()[1] = max(ans.back()[1], intervals[i][1]);
+            else ans.push_back(intervals[i]);
+        }
         return ans;
     }
 };

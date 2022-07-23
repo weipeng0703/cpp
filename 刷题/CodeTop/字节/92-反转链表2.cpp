@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-07-10 18:40:19
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-10 19:28:51
+ * @LastEditTime: 2022-07-23 10:55:17
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<queue>
+using namespace std; 
 /*
 力扣T-92. 反转链表 II
 给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。
@@ -18,20 +31,6 @@
     输入：head = [5], left = 1, right = 1
     输出：[5]
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
-
 // Definition for singly-linked list.
 struct ListNode {
     int val;
@@ -91,9 +90,9 @@ public:
         // 2.头插，依次将后面的元素排到pre后面
         ListNode* cur = pre->next;
         for (int i = 0; i < right - left; i++) {
-            // (1)定下接下来要移到头上的节点
+            // (1)确定接下来要移到头上的节点
             ListNode* temp = cur->next;
-            // (2)cur与temp换位
+            // (2)cur与temp换位往后移，找到下一个循环要移动到前面的节点
             cur->next = temp->next;
             // (3)temp移动到pre后面第一个位置
             temp->next = pre->next;

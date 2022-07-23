@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-13 10:50:50
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-13 11:07:32
+ * @LastEditTime: 2022-07-23 10:24:35
  */
   // https://www.runoob.com/w3cnote/heap-sort.html
 #include<stdio.h>
@@ -21,7 +21,7 @@ using namespace std;
 //  快速排序
 void quickSort(std::vector<int> &nums,int left, int right) {
     if (left + 1 >= right) return;
-    int first = left, last = right - 1, key = nums[first];
+    int first = left, last = right, key = nums[first];
     while (first < last) {
         while (first < last && nums[last] >= key) last--;
         nums[first] = nums[last];
@@ -34,10 +34,10 @@ void quickSort(std::vector<int> &nums,int left, int right) {
 }
 
 int main() {
-    vector<int> a = {34,66,2,5,95,4,46,27};
+    vector<int> a = {46, 75, 61, 87, 12, 43, 23, 54};
     for (auto ele : a) cout << ele << ' ';
 
-    quickSort(a, 0, a.size());
+    quickSort(a, 0, a.size() - 1);
     cout << endl;
     cout << "快速排序完成" << endl;
 
