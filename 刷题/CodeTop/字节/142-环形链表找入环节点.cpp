@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-12 10:52:19
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-12 11:05:15
+ * @LastEditTime: 2022-07-25 20:18:04
  */
 /*
 力扣T-142. 环形链表 II
@@ -50,13 +50,12 @@ public:
             fast = fast->next->next;
             slow = slow->next;
             if (fast == slow) {
-                ListNode* idx1 = fast;
-                ListNode* idx2 = head;
-                while (idx1 != idx2) {
-                    idx1 = idx1->next;
-                    idx2 = idx2->next;
+                fast = head;
+                while (fast != slow) {
+                    fast = fast->next;
+                    slow = slow->next;
                 }
-                return idx1;
+                return fast;
             }
         }
         return nullptr;
