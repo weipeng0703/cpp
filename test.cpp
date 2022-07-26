@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-06-27 09:44:14
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-25 17:08:09
+ * @LastEditTime: 2022-07-26 19:10:46
  */
 # include<vector> 
 # include<algorithm>
@@ -35,25 +35,37 @@ using namespace std;
 #include <cstdlib>
 using namespace std;
 
-#include <iostream>
-using namespace std;
-
-#include <stdio.h>
-
-class test {
+class Student {
+private:
+    int num;
+    char *name;
 public:
-    test() { cout << "constructor with argument" << endl;}
-    ~test() {}
-    test(const test& t) { cout << "copy constructor" << endl; }
-    test& operator=(const test& e) {
-        cout << "assignment operator" << endl;
-        return *this;
-    }
+    Student() {
+        name = new char(20);
+        cout << "Student" << endl;
+    };
+    ~Student(){
+        cout << "~Student " << &name << endl;
+        delete name;
+        name = NULL;
+    };
+    //拷贝构造函数
+    Student(const Student &s){
+        //浅拷贝，当对象的name和传入对象的name指向相同的地址
+        name = s.name;
+        cout << "浅拷贝 Student" << endl;
+        //深拷贝
+        //name = new char(20);
+        //memcpy(name, s.name, strlen(s.name));
+        // cout << "浅拷贝 Student" << endl;
+    };
 };
 int main() {
-    test ort;
-    test a(ort);
-    test b = ort;
-    a = b;
+    {
+        // 花括号让s1和s2变成局部对象，方便测试
+        Student s1;
+        // 复制对象
+        Student s2(s1);
+    }
     return 0;
 }
