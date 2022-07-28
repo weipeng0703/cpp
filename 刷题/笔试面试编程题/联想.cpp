@@ -2,6 +2,14 @@
  * @Descripttion: 
  * @version: 1.0
  * @Author: weipeng
+ * @Date: 2022-07-28 18:57:51
+ * @LastEditors: weipeng
+ * @LastEditTime: 2022-07-28 18:58:09
+ */
+/*
+ * @Descripttion: 
+ * @version: 1.0
+ * @Author: weipeng
  * @Date: 2022-07-05 09:17:15
  * @LastEditors: weipeng
  * @LastEditTime: 2022-07-28 18:57:43
@@ -24,6 +32,7 @@
 #include<queue>
 using namespace std;
 
+// 1-笔试
 /*
 小A和小B都是搬砖人，因为各自的身体素质不同，所以他们为自己制定了不同的小目标。
 小A可以一次搬a1块砖，但是每搬一次就要休息b1分钟，他的目标是一天搬c1块砖;
