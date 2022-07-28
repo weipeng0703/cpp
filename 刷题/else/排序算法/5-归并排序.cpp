@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-16 09:32:26
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-16 10:49:27
+ * @LastEditTime: 2022-07-28 20:46:23
  */ 
   // https://www.runoob.com/w3cnote/heap-sort.html
 #include<stdio.h>
@@ -22,10 +22,11 @@ using namespace std;
 void mergeSort(std::vector<int> &nums, std::vector<int> &temp, int low, int high) {
     // 每部分只剩一个数时结束
     if (low >= high) return;
-    int len = high - low, mid = low + (high - low) / 2;
+    int mid = low + (high - low) / 2;
     int start1 = low, end1 = mid, start2 = mid + 1, end2 = high;
     mergeSort(nums, temp, start1, end1);
     mergeSort(nums, temp, start2, end2);
+    // 暂存数组从low开始
     int index = low;
     // 只有两者都符合才能进行循环，有一个不符合条件循环结束，
     // 表示某一部分的数字遍历完了，剩下的只需要将另一部分的数字加入temp
@@ -34,6 +35,7 @@ void mergeSort(std::vector<int> &nums, std::vector<int> &temp, int low, int high
     }
     while (start1 <= end1) temp[index++] = nums[start1++];
     while (start2 <= end2) temp[index++] = nums[start2++];
+    // 将暂存数组中的数据存到原数组中
     for (int i = low; i <= high; i++) nums[i] = temp[i];
 }
 
