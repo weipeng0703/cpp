@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-10 09:57:07
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-10 10:17:09
+ * @LastEditTime: 2022-07-30 10:59:40
  */
 /*
 力扣T-23. 合并K个升序链表
@@ -68,7 +68,7 @@ public:
                 tail->next = b;
                 b = b->next;
             }
-            tail - tail->next;
+            tail = tail->next;
         }
         tail->next = nullptr;
         return dummy.next;

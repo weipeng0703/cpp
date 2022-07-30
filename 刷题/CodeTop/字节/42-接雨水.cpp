@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-02 20:23:26
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-02 20:42:36
+ * @LastEditTime: 2022-07-30 09:55:07
  */
 /*
 力扣42. 接雨水
@@ -70,6 +70,7 @@ public:
         // 求和
         int ans = 0;
         for (int i = 0; i < height.size(); i++) {
+            // 因为对于某个位置，其能接到的雨水高度就是其左右两边的最低高度-自身高度
             int h = min(maxLeft[i], maxRight[i]) - height[i];
             if (h > 0) ans += h;
         }
@@ -82,7 +83,8 @@ class Solution {
 public:
     int trap(vector<int>& height) {
         int sum = 0;
-        stack<int> st; // 单调栈从栈头到栈尾递增
+        // 单调栈从栈头到栈尾递增，注意该栈内存放的是数组下标而不是数组值
+        stack<int> st;
         st.push(0);
         for (int i = 1; i < height.size(); i++) {
             if (height[i] < height[st.top()]) {
@@ -94,6 +96,7 @@ public:
                 while (!st.empty() && height[i] > height[st.top()]) {
                     int mid = st.top();     // 凹槽底
                     st.pop();               // 此时栈头为左边最高值
+                    // 判断栈是否非空才能继续往下求
                     if (!st.empty()) {
                         int h = min(height[st.top()], height[i]) - height[mid];
                         int w = i - st.top() - 1;
