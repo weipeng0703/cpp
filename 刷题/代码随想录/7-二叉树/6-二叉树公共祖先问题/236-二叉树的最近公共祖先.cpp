@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-04-19 08:33:37
  * @LastEditors: weipeng
- * @LastEditTime: 2022-04-19 08:56:20
+ * @LastEditTime: 2022-07-31 21:23:44
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<priority_queue>
+using namespace std; 
 /*
 力扣236. 二叉树的最近公共祖先
 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
@@ -21,21 +34,8 @@
     输出：5
     解释：节点 5 和节点 4 的最近公共祖先是节点 5 。因为根据定义最近公共祖先节点可以为节点本身。
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
 
-Definition for a binary tree node.
+// Definition for a binary tree node.
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -46,6 +46,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 // 思路：求最近公共祖先->自底向上查找->回溯法->后序遍历（左右中）
+// 一定要记住——因为是递归，使用函数后可认为左右子树已经算出结果
 // 1.
 class Solution {
 public:

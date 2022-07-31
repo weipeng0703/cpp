@@ -1,18 +1,11 @@
 /*
- * @Descripttion: 
+ * @Descripttion:
  * @version: 1.0
  * @Author: weipeng
  * @Date: 2022-06-28 19:35:37
  * @LastEditors: weipeng
- * @LastEditTime: 2022-06-28 19:35:38
+ * @LastEditTime: 2022-07-31 20:38:54
  */
-/*
-力扣T-206.翻转链表
-给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
-示例 1：
-    输入：head = [1,2,3,4,5]
-    输出：[5,4,3,2,1]
-*/ 
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -25,8 +18,14 @@
 #include<algorithm>
 #include<unordered_map>
 #include<priority_queue>
-using namespace std; 
-
+using namespace std;
+/*
+力扣T-206.翻转链表
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+示例 1：
+    输入：head = [1,2,3,4,5]
+    输出：[5,4,3,2,1]
+*/
 // Definition for singly-linked list.
 struct ListNode {
     int val;

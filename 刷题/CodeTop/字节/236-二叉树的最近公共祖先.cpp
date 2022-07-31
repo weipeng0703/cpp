@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-07-01 10:23:44
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-01 11:10:02
+ * @LastEditTime: 2022-07-31 21:04:45
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<priority_queue>
+using namespace std;
 /*
 力扣T-236. 二叉树的最近公共祖先
 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
@@ -25,19 +38,6 @@
     输入：root = [1,2], p = 1, q = 2
     输出：1
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
 
 // Definition for a binary tree node.
 struct TreeNode {
