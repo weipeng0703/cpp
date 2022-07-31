@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-01 10:23:44
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-31 21:04:45
+ * @LastEditTime: 2022-07-31 21:27:33
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -50,6 +50,10 @@ struct TreeNode {
 };
 
 // 1-通用解法-自底向上的后序遍历递归
+// 一定要记住——因为是递归，使用函数后可认为左右子树已经算出结果
+// 通过调试可以加深理解： 
+// F10 (Stpe over) ---- 一步到位，只看这层返回结果即可，仅关注这个函数的宏观语义（使用函数后可认为左右子树已经算出结果。） 
+// F11 (Step into) ---- 进入递归函数，层次深入，直到返回，具体到递归过程微观实现。
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {

@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-07-10 10:22:19
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-10 11:14:53
+ * @LastEditTime: 2022-07-31 22:20:13
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<queue>
+using namespace std;
 /*
 力扣T-124. 二叉树中的最大路径和
 路径 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。
@@ -22,19 +35,6 @@
     输出：42
     解释：最优路径是 15 -> 20 -> 7 ，路径和为 15 + 20 + 7 = 42
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
 
 // Definition for a binary tree node.
 struct TreeNode {
