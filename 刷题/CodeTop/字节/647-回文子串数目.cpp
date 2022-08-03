@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-16 17:01:59
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-16 17:16:29
+ * @LastEditTime: 2022-08-02 11:47:48
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -74,9 +74,8 @@ public:
 class Solution {
 public:
     int countSubstrings(string s) {
-        int size = s.size(), ans = 0;
-
-        for (int i = 0; i < size; i++) {
+        int ans = 0;
+        for (int i = 0; i < s.size(); i++) {
             // 奇数序列：以s[i]为中心往两边延申
             ans += extendSubstring(s, i, i);
             // 偶数序列：以s[i]与s[i + 1]为中心向外延伸
@@ -84,7 +83,10 @@ public:
         }
         return ans;
     }
-    int extendSubstring(string s, int l, int r){
+    // 这个地方传引用效率会提高无数倍
+    // c++中参数是按值传递，如果不使用引用或者指针，则这个地方每一次函数调用，string就会被复制一次，效率很低
+    // 使用引用的话函数传递的是string的引用，不会导致复制。
+    int extendSubstring(string& s, int l, int r){
         int count = 0;
         while (l >= 0 && r < s.size() && s[l] == s[r]) {
             --l;

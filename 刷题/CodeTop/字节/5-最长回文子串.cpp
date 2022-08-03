@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-07-03 10:44:43
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-16 17:15:56
+ * @LastEditTime: 2022-08-02 11:48:27
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<queue>
+using namespace std;
 /*
 与T647-与回文子串个数结合做
 
@@ -20,21 +33,9 @@
     输入：s = "cbbd"
     输出："bb"
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
 
 // 1. dp
+// dp[i][j]表示s[i]-s[j]是否是回文串
 class Solution {
 public:
     int left = 0, right = 0, length = 0;
@@ -50,6 +51,7 @@ public:
                         if (dp[i + 1][j - 1] == true) dp[i][j] = true; 
                     }
                 }
+                // 注意，是求最长回文子串所以长度要大于之前的长度length
                 if (dp[i][j] && j - i + 1 > length) {
                     length = j - i + 1;
                     left = i;
@@ -73,6 +75,9 @@ public:
         }
         return s.substr(l, length);
     }
+    // 这个地方传引用效率会提高无数倍
+    // c++中参数是按值传递，如果不使用引用或者指针，则这个地方每一次函数调用，string就会被复制一次，效率很低
+    // 使用引用的话函数传递的是string的引用，不会导致复制。
     void extend(string& s, int left, int right, int n) {
         while (left >= 0 && right < n && s[left] == s[right]) {
             if (right - left + 1 > length) {

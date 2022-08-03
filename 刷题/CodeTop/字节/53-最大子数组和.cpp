@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-03 09:33:43
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-18 22:15:21
+ * @LastEditTime: 2022-08-01 09:52:40
  */
 /*
 力扣-53. 最大子数组和
@@ -77,6 +77,7 @@ public:
     int maxSubArray(vector<int>& nums) {
         if (nums.size() == 0) return 0;
         int ans = INT_MIN;
+        // temp用于更新要加到ans上的值和碰到太大的负值清零
         int temp = 0;
         for (int i = 0; i < nums.size(); i++) {
             temp += nums[i];
@@ -87,4 +88,4 @@ public:
     }
 }; 
 
-4-分治
+// 4-分治

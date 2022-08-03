@@ -4,8 +4,21 @@
  * @Author: weipeng
  * @Date: 2022-07-06 22:26:00
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-06 22:41:26
+ * @LastEditTime: 2022-08-01 14:35:43
  */
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+#include<stack>
+#include<set>
+#include<vector>
+#include<stdio.h>
+#include<iomanip>
+#include<algorithm>
+#include<unordered_map>
+#include<priority_queue>
+using namespace std;
 /*
 力扣T-88. 合并两个有序数组
 给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
@@ -31,19 +44,6 @@ nums2 的长度为 n 。
     合并结果是 [1] 。
     注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。
 */ 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<iostream>
-#include<stack>
-#include<set>
-#include<vector>
-#include<stdio.h>
-#include<iomanip>
-#include<algorithm>
-#include<unordered_map>
-#include<priority_queue>
-using namespace std; 
 
 // 1-暴力插入后直接sort()
 class Solution {

@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-16 10:59:05
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-28 22:02:17
+ * @LastEditTime: 2022-08-01 11:04:16
  */
   // https://www.runoob.com/w3cnote/heap-sort.html
 #include<stdio.h>
@@ -64,7 +64,7 @@ void heapify(vector<int>& nums, int n, int i) {
     // 若i节点的某个孩子节点 > 该节点，则交换二者的位置
     if (max != i) {
         swap(nums[max], nums[i]);
-        // 交换之后继续维护堆的性质
+        // 交换之后继续维护堆的性质,此时要维护的节点为max
         heapify(nums, n, max);
     }
 }

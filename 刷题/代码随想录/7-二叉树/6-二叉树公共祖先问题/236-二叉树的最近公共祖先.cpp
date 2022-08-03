@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-04-19 08:33:37
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-31 21:27:14
+ * @LastEditTime: 2022-08-01 10:28:02
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -46,6 +46,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 // 思路：求最近公共祖先->自底向上查找->回溯法->后序遍历（左右中）
+
 // 一定要记住——因为是递归，使用函数后可认为左右子树已经算出结果
 // 通过调试可以加深理解： 
 // F10 (Stpe over) ---- 一步到位，只看这层返回结果即可，仅关注这个函数的宏观语义（使用函数后可认为左右子树已经算出结果。） 

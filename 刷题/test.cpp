@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-05 09:17:15
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-28 18:57:43
+ * @LastEditTime: 2022-08-02 22:33:03
  */
 
 #include<stdio.h>
@@ -47,65 +47,28 @@ using namespace std;
 B
 B
 */
-# include<iostream>
-
+class B;
+class A {
+public:
+    A() {cout << "A()" << endl;}
+    ~A() {cout << "~A()" << endl;}
+    shared_ptr<B> _ptrb;
+};
+class B {
+public:
+    B() {cout << "B()" << endl;}
+    ~B() {cout << "~B()" << endl;}
+    shared_ptr<A> _ptra;
+};
 int main() {
 
-    int T = 0;
-    long long a1, b1, c1;
-    long long a2, b2, c2;
-    long long time1, time2;
-    long long cost1, cost2;
-    // 输入数据组
-    std::cin >> T;
-    while (T > 0) {
-        T--;
-        // 输入一组数据
-        std:: cin >> a1 >> b1 >> c1 >> a2 >> b2 >> c2;
-        
-        cost1 = c1 / a1 * b1;
-        cost2 = c2 / a2 * b2;
-        if (cost1 < cost2) {
-            std::cout << "A" << std:: endl;
-        } else if (cost1 > cost2) {
-            std::cout << "B" << std:: endl;
-        } else {
-            std::cout << "A&B" << std:: endl;
-        }
-    }
+    shared_ptr<A> pa(new A());
+    shared_ptr<B> pb(new B());
+
+    pa->_ptrb = pb;
+    pb->_ptra = pa;
+
+    cout << pa.use_count() << endl;		// 2
+    cout << pb.use_count() << endl;		// 2
     return 0;
 }
-
-
-
-
-
-
-# include<bits/stdc++.h>
-char s[100005];     // 输入
-int cnt_b[100005];  // 左起蓝色数量
-int cnt_r[100005];  // 左起红色数量
-int main() {
-
-    int n;
-    std::cin >> n;
-    std::cin >> (s + 1);
-    cnt_b[0] = 0;
-    cnt_r[0] = 0;
-    for (int i = 1; i <= n; i++) {
-        cnt_b[i] = cnt_b[i - 1];
-        cnt_r[i] = cnt_r[i - 1];
-        if (s[i] == 'b') cnt_b[i]++;
-        else cnt_r[i]++;
-    }
-    int ans = min(cnt_r[n], cnt_b[n]);  // 全是同一个色
-    for (int i = 2; i <= n - 1; i++) {
-        int temp1 = cnt_r[i - 1] + cnt_b[n] - cnt_b[i];
-        int temp2 = cnt_b[i - 1] + cnt_r[n] - cnt_r[i];
-        ans = min(ans, min(temp1, temp2));
-    }
-    std::cout << ans << std::endl;
-    return 0;
-}
-
-

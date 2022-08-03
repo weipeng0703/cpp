@@ -4,7 +4,7 @@
  * @Author: weipeng
  * @Date: 2022-07-20 16:08:59
  * @LastEditors: weipeng
- * @LastEditTime: 2022-07-20 17:19:55
+ * @LastEditTime: 2022-08-01 10:56:32
  */
 /*
 力扣T-148. 排序链表
@@ -89,7 +89,10 @@ public:
         ListNode* ptr = sub;
         // ListNode* node;
         while (l1 && l2) {
-            auto& node = l1->val < l2->val ? l1 : l2;
+            // auto& node = l1->val < l2->val ? l1 : l2;
+            ListNode* node;
+            if (l1->val < l2->val) node = l1;
+            else node = l2;
             ptr->next = node;
             node = node->next;
             ptr = ptr->next;
@@ -99,15 +102,17 @@ public:
     }
     ListNode* sortList(ListNode* head) {
         if (!head || !head->next) return head;
+        ListNode* pre = head;
         ListNode* slow = head;
         ListNode* fast = head;
-        while (fast->next && fast->next->next) {
+        while (fast && fast->next) {
+            // pre用于记录slow节点
+            pre = slow;
             slow = slow->next;
             fast = fast->next->next;
         }
-        // 切链, 将链表分为slow之后的链表和由head到fast的链表
-        fast = slow->next;
-        slow->next = nullptr;
-        return merge(sortList(head), sortList(fast));
+        // 切链, 将链表分为(1)由head到slow前一个节点(pre)的链表和(2)slow之后的链表
+        pre->next = nullptr;
+        return merge(sortList(head), sortList(slow));
     }
 };
